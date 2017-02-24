@@ -1,0 +1,38 @@
+group 'com.tab-evaluation-server'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+
+repositories {
+    maven {
+        credentials {
+            username 'admin'
+            password 'yunyao@nexus4support'
+        }
+        url "http://120.26.127.211:8081/nexus/content/groups/public/"
+    }
+    mavenCentral()
+    mavenCentral()
+}
+
+ext {
+    roseVesion = "1.2.2-SNAPSHOT"
+    log4jVersion = "2.3"
+    guavaVersion = "18.0"
+}
+dependencies {
+    compile(
+            "junit:junit:4.11",
+            "com.54chen:paoding-rose-scanning:1.0",
+            "com.54chen:paoding-rose:1.0",
+            "com.54chen:paoding-rose-portal:1.0",
+            "com.54chen:paoding-rose-jade:1.1",
+    )
+
+    providedCompile(
+            "javax:javaee-api:7.0"
+    )
+}
