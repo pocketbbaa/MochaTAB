@@ -7,13 +7,13 @@ apply plugin: 'war'
 sourceCompatibility = 1.7
 
 repositories {
-//    maven {
-//        credentials {
-//            username 'admin'
-//            password 'yunyao@nexus4support'
-//        }
-//        url "http://120.26.127.211:8081/nexus/content/groups/public/"
-//    }
+    maven {
+        credentials {
+            username 'admin'
+            password 'yunyao@nexus4support'
+        }
+        url "http://120.26.127.211:8081/nexus/content/groups/public/"
+    }
     mavenCentral()
 }
 
@@ -29,6 +29,10 @@ dependencies {
             "com.54chen:paoding-rose:1.0",
             "com.54chen:paoding-rose-portal:1.0",
             "com.54chen:paoding-rose-jade:1.1",
+            "commons-dbcp:commons-dbcp:1.4",
+            "jstl:jstl:1.2",
+            "taglibs:standard:1.1.2",
+            "javax.servlet:javax.servlet-api:3.0.1",
     )
 
     providedCompile(

@@ -1,11 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/2/26
-  Time: 16:01
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
     <jsp:include page="temp.jsp"/>
@@ -35,9 +31,9 @@
                 <a href="blog-timeline.html"><span class="icon">&#59160;</span> 评测报告审核 </a>
             </li>
             <li>
-                <a href="pages-table.html"><span class="icon">&#128101;</span> 用户管理</a>
+                <a href="user_list.jsp"><span class="icon">&#128101;</span> 用户管理</a>
             </li>
-            <li><a href="users.html"><span class="icon">&#128101;</span> 管理员管理 </a>
+            <li><a href="managers.jsp"><span class="icon">&#128101;</span> 管理员管理 </a>
             </li>
         </ul>
     </nav>

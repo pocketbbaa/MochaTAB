@@ -22,7 +22,7 @@
         <input value="Password" type="password" />
         <button class="blue" type="submit">登录</button>
         <br/><br/>
-        <a href="index.jsp" ><strong>没有账号，立即注册</strong></a>
+        <a href="regist.jsp" ><strong>没有账号，立即注册</strong></a>
     </form>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
