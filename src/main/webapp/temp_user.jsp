@@ -25,11 +25,10 @@
     </div>
     <nav>
         <ul>
-            <li class="section"><a href="index.jsp"><span class="icon">&#128711;</span> 申请评测</a></li>
             <li>
-                <a href="files.html"><span class="icon">&#127748;</span> 评测报告 </a>
+                <a href="report_1.jsp"><span class="icon">&#127748;</span> 评测报告 </a>
             </li>
-            <li><a href="users.html"><span class="icon">&#128101;</span> 个人中心 </a></li>
+            <li><a href="user_info.jsp"><span class="icon">&#128101;</span> 个人中心 </a></li>
         </ul>
     </nav>
 </head>

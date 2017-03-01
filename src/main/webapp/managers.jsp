@@ -11,16 +11,16 @@
 <body>
 <jsp:include page="temp_manager.jsp"/>
 <div style="width: 100%;margin-left: 210px;">
-    <div style="margin-left: 80%;margin-top: 10px;"><a href="#"><button style="width: 159px;height: 37px;" type="button" class="btn btn-success">添加新管理员</button></a></div>
+    <div style="margin-left: 80%;margin-top: 10px;"><a href="add_manager.jsp"><button style="width: 159px;height: 37px;" type="button" class="btn btn-success">添加新管理员</button></a></div>
     <section class="widget">
         <div class="content">
             <table id="myTable" border="0" width="100">
                 <thead>
                 <tr>
-                    <th class="avatar">Name</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Date</th>
+                    <th class="avatar">姓名</th>
+                    <th>账号</th>
+                    <th>密码</th>
+                    <th>创建时间</th>
                     <th>操作</th>
                 </tr>
                 </thead>

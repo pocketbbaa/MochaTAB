@@ -19,16 +19,19 @@
             </div>
         </section>
     </div>
-    <nav>
+    <nav style="height: auto">
         <ul>
             <li>
-                <a href="pages-table.html"><span class="icon">&#128196;</span> 创建评测</a>
+                <a href="create_product.jsp"><span class="icon">&#128196;</span> 创建商品资料</a>
             </li>
             <li>
-                <a href="pages-table.html"><span class="icon">&#128196;</span> 申请列表</a>
+                <a href="create_case.jsp"><span class="icon">&#128196;</span> 创建市调专案</a>
             </li>
             <li>
-                <a href="blog-timeline.html"><span class="icon">&#59160;</span> 评测报告审核 </a>
+                <a href="apply_list.jsp"><span class="icon">&#128196;</span> 申请列表</a>
+            </li>
+            <li>
+                <a href="report_check.jsp"><span class="icon">&#59160;</span> 评测报告审核 </a>
             </li>
             <li>
                 <a href="user_list.jsp"><span class="icon">&#128101;</span> 用户管理</a>

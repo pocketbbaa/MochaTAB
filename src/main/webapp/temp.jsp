@@ -25,7 +25,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script src="js/jquery.wysiwyg.js"></script>
 <script src="js/jquery.checkbox.min.js"></script>
-<%--<script src="js/cycle.js"></script>--%>
 <script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/cycle.js"></script>
 </body>
 </html>

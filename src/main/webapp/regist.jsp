@@ -18,7 +18,7 @@
 <section class="content">
     <div style="margin-left: 30%"><h1><strong>请填写相关信息</strong></h1></div>
     <div style="margin-left: 20%">
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="login_user.jsp">
             <div class="form-group">
                 <label for="1" class="col-sm-2 control-label">姓名</label>
                 <div class="col-sm-10">
@@ -57,21 +57,21 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">职业</label>
+                <label for="6" class="col-sm-2 control-label">职业</label>
                 <div class="col-sm-10">
-                    <select id="usertype" name="usertype" class="selectpicker show-tick form-control" multiple
-                            data-live-search="false">
-                        <option value="0">医生</option>
-                        <option value="1">警察</option>
-                        <option value="2">白领</option>
-                        <option value="3">程序员</option>
-                    </select>
+                    <input type="password" class="form-control" id="6" placeholder="学生"
+                           style="width: 200px;">
                 </div>
             </div>
-
+            <div class="form-group">
+                .
+                .
+                .
+                .
+            </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Sign in</button>
+                    <button type="submit" class="btn btn-default">立即注册</button>
                 </div>
             </div>
 
@@ -83,13 +83,6 @@
 <script type="text/javascript" src="date/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-<script type="text/javascript">
-    $(window).on('load', function () {
-        $('#usertype').selectpicker({
-            'selectedText': 'cat'
-        });
-    });
-</script>
 <script type="text/javascript">
     $('.form_datetime').datetimepicker({
         //language:  'fr',

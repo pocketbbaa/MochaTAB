@@ -21,7 +21,7 @@
         <br/>
         <br/>
         <br/>
-        <input type="text" value="Email" />
+        <input type="text" value="username" />
         <input value="Password" type="password" />
         <button class="blue">登录</button>
     </form>
