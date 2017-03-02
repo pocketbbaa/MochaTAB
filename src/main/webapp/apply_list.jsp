@@ -9,7 +9,7 @@
     <title>Retina Dashboard</title>
 </head>
 <body>
-<jsp:include page="temp_manager.jsp"/>
+<jsp:include page="views/common/temp_manager.jsp"/>
 <div style="width: 100%;margin-left: 210px;">
     <section class="widget">
         <div class="content">

@@ -9,7 +9,7 @@
     <title>Retina Dashboard</title>
 </head>
 <body>
-<jsp:include page="temp_manager.jsp"/>
+<jsp:include page="views/common/temp_manager.jsp"/>
 <div style="width: 100%;margin-left: 210px;">
     <div style="margin-left: 80%;margin-top: 10px;"><a href="#">
         <button style="width: 159px;height: 37px;" type="button" class="btn btn-success">添加新用户</button>

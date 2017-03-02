@@ -12,17 +12,52 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/2/27 0027.
  */
-@Path("/manager")
+@Path("/edit")
 public class ManagerController {
 
+//    private Logger webLog = Log4jUtil.webLog;
     @Autowired
     private ManagerService managerService;
+
+    /**
+     * 登陆
+     *
+     * @param model
+     * @param username
+     * @param password
+     * @param session
+     * @return
+     */
+    @Post("/login")
+    public String login(Model model, @Param("username") String username, @Param("password") String password, HttpSession session) {
+
+//        webLog.info("edit/login-> username:"+username+"  password:"+password);
+
+        if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
+            model.add("message", "账号密码错误!");
+            return "edit/login_manager";
+        }
+        Integer ID = managerService.login(username, password);
+
+//        webLog.info("edit/login->UserID:" + ID);
+        System.out.println("ID:" + ID);
+        if (ID == null || ID == 0) {
+            model.add("message", "账号密码错误!");
+            return "edit/login_manager";
+        }
+        Manager manager = managerService.getByID(ID);
+        if (manager != null) {
+            session.setAttribute("manager", manager);
+        }
+        return "edit/home_manager";
+    }
 
 
     /**
@@ -36,11 +71,11 @@ public class ManagerController {
 
         List<Manager> managerList = managerService.getList();
         if (CollectionUtils.isEmpty(managerList)) {
-            return "managers";
+            return "edit/managers";
         }
         model.add("managerList", managerList);
 
-        return "managers";
+        return "edit/managers";
     }
 
     /**
@@ -52,17 +87,20 @@ public class ManagerController {
      * @return
      */
     @Post("/add")
+    @Get("/add")
     public String add(Model model, @Param("username") String username, @Param("password") String password) {
+
+        System.out.println("username:" + username + "  password:" + password);
 
         String message = "输入信息有误";
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
             model.add("message", message);
-            return "manager_add_success";
+            return "r:/edit/list";
         }
         if (managerService.userExist(username)) {
             message = "用户名已存在";
             model.add("message", message);
-            return "manager_add";
+            return "r:/edit/list";
         }
 
         Manager manager = new Manager();
@@ -73,10 +111,10 @@ public class ManagerController {
         if (managerService.add(manager)) {
             message = "添加成功!";
             model.add("message", message);
-            return "manager_add_success";
+            return "r:/edit/list";
         }
         model.add("message", message);
-        return "manager_add_success";
+        return "r:/edit/list";
     }
 
     /**
@@ -90,10 +128,22 @@ public class ManagerController {
     public String delete(Model model, @Param("id") int id) {
 
         if (managerService.deleteByID(id)) {
-            return "managers";
+            return "r:/edit/list";
         }
         model.add("message", "用户异常，稍后重试");
-        return "managers";
+        return "r:/edit/list";
+    }
+
+    /**
+     * 安全退出
+     *
+     * @param session
+     * @return
+     */
+    @Get("/exit")
+    public String exit(HttpSession session) {
+        session.removeAttribute("manager");
+        return "index";
     }
 
 }

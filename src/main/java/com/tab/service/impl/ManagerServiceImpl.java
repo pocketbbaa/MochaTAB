@@ -20,6 +20,17 @@ public class ManagerServiceImpl implements ManagerService {
 
 
     @Override
+    public Integer login(String username, String password) {
+
+        return managerDAO.getIDByNameAndPwd(username, password);
+    }
+
+    @Override
+    public Manager getByID(int id) {
+        return managerDAO.getByID(id);
+    }
+
+    @Override
     public boolean add(Manager manager) {
         if (manager == null) {
             return false;

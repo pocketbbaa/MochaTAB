@@ -8,7 +8,7 @@
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<jsp:include page="temp_user.jsp"/>
+<jsp:include page="views/common/temp_user.jsp"/>
 
 <div style="width: 100%;margin-left: 210px;">
     <section class="widget">

@@ -9,6 +9,23 @@ import java.util.List;
  */
 public interface ManagerService {
 
+
+    /**
+     * 管理员登陆
+     *
+     * @param username
+     * @param password
+     * @return
+     */
+    Integer login(String username, String password);
+
+    /**
+     * 根据ID获取管理员对象
+     * @param id
+     * @return
+     */
+    Manager getByID(int id);
+
     /**
      * 添加管理员
      *

@@ -21,7 +21,7 @@
 </section>
 <br/><br/><br/><br/>
 <div style="margin-left: 37%">
-    <a href="login_manager.jsp">
+    <a href="views/edit/login_manager.jsp">
         <button class="blue" style="width: 200px;height: 80px">管理员
         </button>
     </a>

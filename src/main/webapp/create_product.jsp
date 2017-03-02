@@ -9,7 +9,7 @@
     <title>Retina Dashboard</title>
 </head>
 <body>
-<jsp:include page="temp_manager.jsp"/>
+<jsp:include page="views/common/temp_manager.jsp"/>
 <div style="width: 100%;margin-left: 210px;">
     <section class="widget">
         <h1><strong>创建商品资料库：</strong></h1>
@@ -17,7 +17,7 @@
         <br/>
         <h1>填写商品基本资料 </h1>
     </section>
-    <div style="margin-left: 80%;margin-top: 10px;"><a href="home_manger.jsp">
+    <div style="margin-left: 80%;margin-top: 10px;"><a href="views/edit/home_manger.jsp">
         <button style="width: 159px;height: 37px;" type="button" class="btn btn-success">创建</button>
     </a></div>
 </div>

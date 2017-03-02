@@ -6,7 +6,7 @@
     <title>Retina Dashboard</title>
 </head>
 <body>
-<jsp:include page="temp_user.jsp"/>
+<jsp:include page="views/common/temp_user.jsp"/>
 
 
 </body>

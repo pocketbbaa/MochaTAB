@@ -15,6 +15,25 @@ import java.util.List;
 public interface ManagerDAO {
 
     /**
+     * 登陆
+     *
+     * @param username
+     * @param password
+     * @return
+     */
+    @SQL("SELECT ID FROM administrator WHERE username = :1 AND PASSWORD = :2")
+    Integer getIDByNameAndPwd(String username, String password);
+
+    /**
+     * 根据ID获取管理员对象
+     *
+     * @param id
+     * @return
+     */
+    @SQL("SELECT ID,UserName,PASSWORD,Role,CreateTime FROM administrator WHERE ID = :1")
+    Manager getByID(int id);
+
+    /**
      * 添加管理员
      *
      * @param manager

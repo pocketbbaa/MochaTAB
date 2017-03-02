@@ -9,7 +9,7 @@
     <title>Retina Dashboard</title>
 </head>
 <body>
-<jsp:include page="temp_manager.jsp"/>
+<jsp:include page="../common/temp_manager.jsp"/>
 
 
 </body>

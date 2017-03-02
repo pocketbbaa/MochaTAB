@@ -9,7 +9,7 @@
     <title>Retina Dashboard</title>
 </head>
 <body>
-<jsp:include page="temp_user.jsp"/>
+<jsp:include page="views/common/temp_user.jsp"/>
 <div class="col-sm-6 col-md-4" style="width:300px;height: 400px;margin-top: 10px;">
     <div class="thumbnail">
         <img src="img/1.jpg" alt="...">
