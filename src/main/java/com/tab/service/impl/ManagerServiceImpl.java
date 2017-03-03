@@ -1,6 +1,6 @@
 package com.tab.service.impl;
 
-import com.tab.dao.ManagerDAO;
+import com.tab.dao.tab.ManagerDAO;
 import com.tab.model.Manager;
 import com.tab.service.ManagerService;
 import org.apache.commons.lang.StringUtils;

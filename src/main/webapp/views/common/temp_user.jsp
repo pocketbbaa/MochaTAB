@@ -15,11 +15,11 @@
         </header>
         <section class="user">
             <div class="profile-img">
-                <p><img src="../../images/uiface2.png" alt="" height="40" width="40"/> 欢迎回来 XXX</p>
+                <p><img src="../../images/uiface2.png" alt="" height="40" width="40"/> 欢迎回来 ${sessionScope.user.username}</p>
             </div>
             <div class="buttons">
                 <button class="ico-font">&#9206;</button>
-                <span class="button blue"><a href="../../index.jsp">安全退出</a></span>
+                <span class="button blue"><a href="${ctx}/user/exit">安全退出</a></span>
             </div>
         </section>
     </div>

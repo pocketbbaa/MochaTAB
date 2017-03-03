@@ -1,4 +1,4 @@
-package com.tab.dao;
+package com.tab.dao.tab;
 
 import com.tab.model.Manager;
 import net.paoding.rose.jade.annotation.DAO;

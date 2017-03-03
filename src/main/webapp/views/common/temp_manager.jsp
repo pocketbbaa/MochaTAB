@@ -15,7 +15,7 @@
             </div>
             <div class="buttons">
                 <button class="ico-font">&#9206;</button>
-                <span class="button blue"><a href="../../index.jsp">安全退出</a></span>
+                <span class="button blue"><a href="${ctx}/edit/exit">安全退出</a></span>
             </div>
         </section>
     </div>
@@ -31,7 +31,7 @@
                 <a href="../../report_check.jsp"><span class="icon">&#59160;</span> 评测报告审核 </a>
             </li>
             <li>
-                <a href="../../user_list.jsp"><span class="icon">&#128101;</span> 用户管理</a>
+                <a href="${ctx}/user/list"><span class="icon">&#128101;</span> 用户管理</a>
             </li>
 
             <c:if test="${sessionScope.manager.role == 1}">

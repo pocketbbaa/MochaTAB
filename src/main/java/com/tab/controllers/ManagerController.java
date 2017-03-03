@@ -3,12 +3,14 @@ package com.tab.controllers;
 
 import com.tab.model.Manager;
 import com.tab.service.ManagerService;
+import com.tab.utils.Log4jUtil;
 import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
 import net.paoding.rose.web.annotation.rest.Post;
 import net.paoding.rose.web.var.Model;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
@@ -22,7 +24,8 @@ import java.util.List;
 @Path("/edit")
 public class ManagerController {
 
-//    private Logger webLog = Log4jUtil.webLog;
+
+    private Logger webLog = Log4jUtil.webLog;
     @Autowired
     private ManagerService managerService;
 
@@ -38,7 +41,7 @@ public class ManagerController {
     @Post("/login")
     public String login(Model model, @Param("username") String username, @Param("password") String password, HttpSession session) {
 
-//        webLog.info("edit/login-> username:"+username+"  password:"+password);
+        webLog.info("edit/login-> username:" + username + "  password:" + password);
 
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
             model.add("message", "账号密码错误!");
@@ -46,7 +49,7 @@ public class ManagerController {
         }
         Integer ID = managerService.login(username, password);
 
-//        webLog.info("edit/login->UserID:" + ID);
+        webLog.info("edit/login->UserID:" + ID);
         System.out.println("ID:" + ID);
         if (ID == null || ID == 0) {
             model.add("message", "账号密码错误!");
@@ -143,7 +146,7 @@ public class ManagerController {
     @Get("/exit")
     public String exit(HttpSession session) {
         session.removeAttribute("manager");
-        return "index";
+        return "r:/index.jsp";
     }
 
 }

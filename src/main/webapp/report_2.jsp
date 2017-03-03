@@ -18,7 +18,7 @@
         <h2>測試員填寫心得並評分</h2>
         <h2>评分（小题目）</h2>
     </section>
-    <div style="margin-left: 80%;margin-top: 10px;"><a href="home_user.jsp">
+    <div style="margin-left: 80%;margin-top: 10px;"><a href="views/user/home_user.jsp">
         <button style="width: 159px;height: 37px;" type="button" class="btn btn-success">提交报告</button>
     </a></div>
 </div>
