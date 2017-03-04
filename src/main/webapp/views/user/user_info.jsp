@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>Retina Dashboard</title>
-    <link href="date/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="../../date/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<jsp:include page="views/common/temp_user.jsp"/>
+<jsp:include page="../common/temp_user.jsp"/>
 
 <div style="width: 100%;margin-left: 210px;">
     <section class="widget">
@@ -69,9 +69,9 @@
         </div>
     </section>
 </div>
-<script type="text/javascript" src="date/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="date/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../../date/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../../date/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 <script type="text/javascript">
     $('.form_datetime').datetimepicker({

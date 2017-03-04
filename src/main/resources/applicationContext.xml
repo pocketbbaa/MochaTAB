@@ -13,6 +13,7 @@
     <context:component-scan base-package="com.tab"/>
 
     <!-- 数据源 -->
+    <!-- tab库 -->
     <bean id="jade.dataSource.com.tab.dao.tab" class="org.apache.commons.dbcp.BasicDataSource">
 
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -32,6 +33,7 @@
         <property name="minEvictableIdleTimeMillis" value="1800000"/>
     </bean>
 
+    <!-- mochaproduct -->
     <bean id="jade.dataSource.com.tab.dao.mocha" class="org.apache.commons.dbcp.BasicDataSource">
 
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>

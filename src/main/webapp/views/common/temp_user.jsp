@@ -15,7 +15,7 @@
         </header>
         <section class="user">
             <div class="profile-img">
-                <p><img src="../../images/uiface2.png" alt="" height="40" width="40"/> 欢迎回来 ${sessionScope.user.username}</p>
+                <p><img src="${sessionScope.user.mochaUserPic}" alt="" height="40" width="40"/> 欢迎回来 ${sessionScope.user.mochaUserName}</p>
             </div>
             <div class="buttons">
                 <button class="ico-font">&#9206;</button>
@@ -28,7 +28,7 @@
             <li>
                 <a href="../../report_1.jsp"><span class="icon">&#127748;</span> 评测报告 </a>
             </li>
-            <li><a href="../../user_info.jsp"><span class="icon">&#128101;</span> 个人中心 </a></li>
+            <li><a href="../../create_user.html"><span class="icon">&#128101;</span> 个人中心 </a></li>
         </ul>
     </nav>
 </head>

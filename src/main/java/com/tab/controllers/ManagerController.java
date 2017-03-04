@@ -26,6 +26,7 @@ public class ManagerController {
 
 
     private Logger webLog = Log4jUtil.webLog;
+
     @Autowired
     private ManagerService managerService;
 
@@ -57,7 +58,7 @@ public class ManagerController {
         }
         Manager manager = managerService.getByID(ID);
         if (manager != null) {
-            session.setAttribute("manager", manager);
+            session.setAttribute("user", manager);
         }
         return "edit/home_manager";
     }
@@ -69,6 +70,7 @@ public class ManagerController {
      * @param model
      * @return
      */
+    @ValidateLogin
     @Get("/list")
     public String getManagerList(Model model) {
 
@@ -89,8 +91,8 @@ public class ManagerController {
      * @param password
      * @return
      */
+    @ValidateLogin
     @Post("/add")
-    @Get("/add")
     public String add(Model model, @Param("username") String username, @Param("password") String password) {
 
         System.out.println("username:" + username + "  password:" + password);
@@ -127,9 +129,9 @@ public class ManagerController {
      * @param id
      * @return
      */
+    @ValidateLogin
     @Get("/delete/{id}")
     public String delete(Model model, @Param("id") int id) {
-
         if (managerService.deleteByID(id)) {
             return "r:/edit/list";
         }
@@ -143,9 +145,10 @@ public class ManagerController {
      * @param session
      * @return
      */
+    @ValidateLogin
     @Get("/exit")
     public String exit(HttpSession session) {
-        session.removeAttribute("manager");
+        session.removeAttribute("user");
         return "r:/index.jsp";
     }
 

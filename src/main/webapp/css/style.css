@@ -25,9 +25,12 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
+	/*font-size: 18px;*/
 	font: inherit;
 	vertical-align: baseline;
+}
+html,body{
+	font-size: 18px;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -73,13 +76,13 @@ table {
 }
 
 html {
-	height: 100%;
+	/*height: 100%;*/
 }
 
 body {
 	margin:0;
 	padding: 0;
-	height: 100%;
+	/*height: 100%;*/
 	font-family: arial;
 	font-size: 12px;
 	background: #f7f7f7;
@@ -394,6 +397,7 @@ section.user .button .pip {
 button.ico-font {
 	font-family: "entypo";
 	font-size: 30px;
+	color: #fff;
 	line-height: 0px;
 	padding: 17px 10px;
 	margin: 0px 0 -14px 0;
@@ -492,6 +496,7 @@ section.widget {
 	background: #fff;
 	border: 1px solid #e3e3e3;
 	margin: 0 0 25px 0;
+	padding-bottom: 30px;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
@@ -1592,10 +1597,11 @@ div.wysiwyg iframe { clear: left; background-color:white; padding:10px; margin:0
 	
 	body {
 		padding-top: 130px;
-		position: absolute;
+		/*position: absolute;*/
 		width: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
+		font-size: 14px;
 	}
 	
 	.testing {
@@ -1608,9 +1614,9 @@ div.wysiwyg iframe { clear: left; background-color:white; padding:10px; margin:0
 	nav {
 		width: 215px;
 		overflow: hidden;
-		position: absolute;
-		left: -215px;
-		top:126px !important;
+		position: fixed;
+		left: -216px;
+		top:125px !important;
 		z-index: 1000;
 		
 		box-shadow: 1px 0 rgba(0, 0, 0, 0.9);

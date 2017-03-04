@@ -5,6 +5,7 @@ import com.tab.dao.tab.UserDAO;
 import com.tab.model.User;
 import com.tab.model.UserMocha;
 import com.tab.service.UserService;
+import com.tab.utils.PhotoUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,14 +18,6 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    /***
-     * 抹茶商品图片前缀(阿里)
-     */
-    private static final String URL_MOCHA_IMAGE_ALI_PFEFIX = "https://img.immocha.com";
-    /***
-     * 抹茶商品图片前缀(阿里)
-     */
-    private static final String URL_MOCHA_IMAGE_ALI_PFEFIX_1 = "https://img.immocha.com/";
 
     @Autowired
     private UserDAO userDAO;
@@ -78,7 +71,7 @@ public class UserServiceImpl implements UserService {
     public List<User> getUserList() {
         List<User> userList = userDAO.getUserList();
         for (User user : userList) {
-            user.setMochaUserPic(getDomainPic(user.getMochaUserPic()));
+            user.setMochaUserPic(PhotoUtil.getDomainPic(user.getMochaUserPic()));
         }
         return userList;
     }
@@ -100,31 +93,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByID(int id) {
-        return userDAO.getByID(id);
+        User user = userDAO.getByID(id);
+        user.setMochaUserPic(PhotoUtil.getDomainPic(user.getMochaUserPic()));
+        return user;
     }
 
-    /***
-     * 通过图片的URI, 得到包含域名的完整URL路径;
-     */
-    public static final String getDomainPic(String picURL) {
-        picURL = picURL.trim();
-        if (StringUtils.startsWithIgnoreCase(picURL, "http")) {
-            return picURL;
-        }
-        return buildAliURL(picURL);
-    }
 
-    /**
-     * 合成Ali图片链接
-     */
-    public static String buildAliURL(String path) {
-        if (StringUtils.isBlank(path)) {
-            return path;
-        }
-        if (path.startsWith("/")) {
-            return URL_MOCHA_IMAGE_ALI_PFEFIX + path;
-        } else {
-            return URL_MOCHA_IMAGE_ALI_PFEFIX_1 + path;
-        }
-    }
 }

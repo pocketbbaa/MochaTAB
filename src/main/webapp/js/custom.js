@@ -74,20 +74,30 @@ $(document).ready(function() {
 	});
 	
 	// Mobile navigation
+	var isShow = false;
+
+	$('#navToggleBtn').on('click', function() {
+		isShow = !isShow;
+		if(isShow) {
+			$("nav").animate({"left" : 0}, 20);
+		} else {
+			$("nav").animate({"left" : '-216px'}, 20);
+		}
+	})
 	
-	$(".ico-font").toggle(function(){
-		$("nav").animate({"left" : 0}, 20);
-		$("section.content").animate({ marginLeft: 215, marginRight: -215}, 20);
-		$("section.alert").animate({ marginLeft: 215}, 20);
-	}, function(){
-		$("nav").animate({"left" : "-215px"});
-		$("section.content").animate({ marginLeft: 0, marginRight: 0}, 400);
-		$("section.alert").animate({ marginLeft: 0, marginRight: 0}, 400);
-		return false;
-	});
+	// $(".ico-font").toggle(function(){
+	// 	$("nav").animate({"left" : 0}, 20);
+	// 	$("section.content").animate({ marginLeft: 215, marginRight: -215}, 20);
+	// 	$("section.alert").animate({ marginLeft: 215}, 20);
+	// }, function(){
+	// 	$("nav").animate({"left" : "-216px"});
+	// 	$("section.content").animate({ marginLeft: 0, marginRight: 0}, 400);
+	// 	$("section.alert").animate({ marginLeft: 0, marginRight: 0}, 400);
+	// 	return false;
+	// });
 	
 	// iPhone style checkbox
-	$('header aside span input[type=checkbox]').checkbox();
+	// $('header aside span input[type=checkbox]').checkbox();
 	
 	$('.settings-dd li input').each(function(){
 	    $(this).next('span').andSelf().wrapAll('<div class="checkbox-wrap"/>');
@@ -108,85 +118,85 @@ $(document).ready(function() {
 		});
 	});
 	
-    $('.post').wysiwyg({
-		controls: {
-			html: { visible: true },
-			h1: { visible: false },
-			h2: { visible: false },
-			h3: { visible: false },
-			code: { visible: false},
-			createLink: { visible: false},
-			unLink: { visible: true},
-			insertImage: { visible: false},
-			insertTable: { visible: false},
-			insertHorizontalRule: { visible: false},
-			subscript: { visible: true},
-			superscript: { visible: true},
-			insertOrderedList: { visible: false},
-			insertUnorderedList: { visible: false},
-			indent: { visible: true},
-			outdent: { visible: true},
-			undo: {visible: true},
-			redo: {visible: true},
-			justifyRight: {visible: true},
-			justifyLeft: {visible: true},
-			justifyFull: {visible: true},
-			justifyCenter: {visible: true},
-		}, css : "css/wysiwyg.css"
-	});
+ //    $('.post').wysiwyg({
+	// 	controls: {
+	// 		html: { visible: true },
+	// 		h1: { visible: false },
+	// 		h2: { visible: false },
+	// 		h3: { visible: false },
+	// 		code: { visible: false},
+	// 		createLink: { visible: false},
+	// 		unLink: { visible: true},
+	// 		insertImage: { visible: false},
+	// 		insertTable: { visible: false},
+	// 		insertHorizontalRule: { visible: false},
+	// 		subscript: { visible: true},
+	// 		superscript: { visible: true},
+	// 		insertOrderedList: { visible: false},
+	// 		insertUnorderedList: { visible: false},
+	// 		indent: { visible: true},
+	// 		outdent: { visible: true},
+	// 		undo: {visible: true},
+	// 		redo: {visible: true},
+	// 		justifyRight: {visible: true},
+	// 		justifyLeft: {visible: true},
+	// 		justifyFull: {visible: true},
+	// 		justifyCenter: {visible: true},
+	// 	}, css : "css/wysiwyg.css"
+	// });
 	
 	// WYSIWYG Editor
-	$(window).bind("load resize", function(){
-	if ( $(window).width() < 1024) {
-		$('#quick_post').wysiwyg({
-			controls: {
-				html: { visible: true },
-				h1: { visible: false },
-				h2: { visible: false },
-				h3: { visible: false },
-				code: { visible: false},
-				createLink: { visible: false},
-				unLink: { visible: false},
-				insertImage: { visible: false},
-				insertTable: { visible: false},
-				insertHorizontalRule: { visible: false},
-				subscript: { visible: false},
-				superscript: { visible: false},
-				insertOrderedList: { visible: false},
-				insertUnorderedList: { visible: false},
-				indent: { visible: false},
-				outdent: { visible: false},
-				undo: {visible: false},
-				redo: {visible: false},
-				justifyRight: {visible: false},
-				justifyLeft: {visible: false},
-				justifyFull: {visible: false},
-				justifyCenter: {visible: false},
-			}, css : "css/wysiwyg.css"
-		});
-	} else {
-		$('#quick_post').wysiwyg({
-			controls: {
-				html: { visible: true },
-				h1: { visible: false },
-				h2: { visible: false },
-				h3: { visible: false },
-				code: { visible: false},
-				createLink: { visible: false},
-				unLink: { visible: false},
-				insertImage: { visible: false},
-				insertTable: { visible: false},
-				insertHorizontalRule: { visible: false},
-				subscript: { visible: false},
-				superscript: { visible: false},
-				insertOrderedList: { visible: false},
-				insertUnorderedList: { visible: false},
-				indent: { visible: false},
-				outdent: { visible: false}
-			}, css : "css/wysiwyg.css"
-		});
-	}
-	});
+	// $(window).bind("load resize", function(){
+	// if ( $(window).width() < 1024) {
+	// 	$('#quick_post').wysiwyg({
+	// 		controls: {
+	// 			html: { visible: true },
+	// 			h1: { visible: false },
+	// 			h2: { visible: false },
+	// 			h3: { visible: false },
+	// 			code: { visible: false},
+	// 			createLink: { visible: false},
+	// 			unLink: { visible: false},
+	// 			insertImage: { visible: false},
+	// 			insertTable: { visible: false},
+	// 			insertHorizontalRule: { visible: false},
+	// 			subscript: { visible: false},
+	// 			superscript: { visible: false},
+	// 			insertOrderedList: { visible: false},
+	// 			insertUnorderedList: { visible: false},
+	// 			indent: { visible: false},
+	// 			outdent: { visible: false},
+	// 			undo: {visible: false},
+	// 			redo: {visible: false},
+	// 			justifyRight: {visible: false},
+	// 			justifyLeft: {visible: false},
+	// 			justifyFull: {visible: false},
+	// 			justifyCenter: {visible: false},
+	// 		}, css : "css/wysiwyg.css"
+	// 	});
+	// } else {
+	// 	$('#quick_post').wysiwyg({
+	// 		controls: {
+	// 			html: { visible: true },
+	// 			h1: { visible: false },
+	// 			h2: { visible: false },
+	// 			h3: { visible: false },
+	// 			code: { visible: false},
+	// 			createLink: { visible: false},
+	// 			unLink: { visible: false},
+	// 			insertImage: { visible: false},
+	// 			insertTable: { visible: false},
+	// 			insertHorizontalRule: { visible: false},
+	// 			subscript: { visible: false},
+	// 			superscript: { visible: false},
+	// 			insertOrderedList: { visible: false},
+	// 			insertUnorderedList: { visible: false},
+	// 			indent: { visible: false},
+	// 			outdent: { visible: false}
+	// 		}, css : "css/wysiwyg.css"
+	// 	});
+	// }
+	// });
 	
 	// Sticky sidebar
 	
@@ -204,7 +214,17 @@ $(document).ready(function() {
 	        }
 	    });
 	 }
+	 if ($(window).width() < 768) {
+	 	$('#main-wrap').css('marginLeft', 0)
+	 }
 	 });
+
+
+	//主体内容区位置
+	var navWidth = $('#navBar').outerWidth();
+	console.log('navWidth', navWidth)
+	$('#main-wrap').css('marginLeft', navWidth)
+
     
     	
 });

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+   <meta charset="utf-8">
+    <title>Retina Dashboard</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content=""/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" media="all"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.css">
+    <link href="css/city-picker.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/create_style.css">
+     <!--[if IE]><link rel="stylesheet" href="css/ie.css" media="all"/><![endif]-->
+    <!--[if lt IE 9]><link rel="stylesheet" href="css/lt-ie-9.css" media="all"/><![endif]-->
+</head>
+<body>
+    <div class="wrap" style="width: 100%;height: 100%;overflow-x: hidden;overflow-y: auto;">
+        <div class="testing">
+               <header class="main">
+                   <h1><strong>TAB BackServer</strong></h1>
+               </header>
+               <section class="user">
+                   <div class="profile-img">
+                       <p><img src="images/uiface2.png" alt="" height="40" width="40"/> 欢迎回来 ${sessionScope.manager.username}</p>
+                   </div>
+                   <div class="buttons">
+                       <button class="ico-font" id="navToggleBtn">&#9206;</button>
+                       <span class="button blue"><a href="index.jsp">安全退出</a></span>
+                   </div>
+               </section>
+           </div>
+           <nav id="navBar">
+               <ul>
+                   <li>
+                       <a href="#"><span class="icon">&#128196;</span> 创建商品资料</a>
+                   </li>
+                   <li>
+                       <a href="#"><span class="icon">&#128196;</span> 创建市调专案</a>
+                   </li>
+                   <li>
+                       <a href="#"><span class="icon">&#59160;</span> 评测报告审核 </a>
+                   </li>
+                   <li>
+                       <a href="#"><span class="icon">&#128101;</span> 用户管理</a>
+                   </li>
+                       <li><a href="#"><span class="icon">&#128101;</span> 管理员管理 </a>
+                       </li>
+               </ul>
+           </nav>
+           <div style="overflow:hidden;margin-left: 215px;" id="main-wrap">
+               <section class="widget">
+                   <h2 style="line-height: 40px;text-align: center;padding: 30px 0;font-size: 35px;">
+                        <span>添加新用户</span>
+                   </h2>
+                   <div class="content">
+                      <div class="info-lines">
+                          <span class="info-label">姓名</span>
+                          <input class="input-disabled" type="text" disabled>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">昵称</span>
+                          <input type="text" class="input-disabled" disabled>
+                          <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                          <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">生日</span>
+                          <input type="text" size="16" class="form_datetime" readonly placeholder="生日">
+                          <span class="glyphicon glyphicon-flag info-reminder hide"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder"></span>
+                          <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">性别</span>
+                          <div class="margint10 width85ptg d-inline-b">
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="sex" id="male" value="male" checked>男</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="sex" id="female" value="female">女</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">婚姻状况</span>
+                          <div class="margint10 width85ptg d-inline-b">
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="marrige" id="married" value="married" checked>已婚</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="marrige" id="single" value="single">未婚</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">职业</span>
+                          <select class="form-control customed-select" style="border-color: #e3e3e3">
+                            <option>农林牧渔业</option>
+                            <option>制造业（不含资讯电脑业）</option>
+                            <option>咨询工业</option>
+                            <option>咨询服务业</option>
+                            <option>营造业</option>
+                            <option>商业</option>
+                            <option>运输业</option>
+                          </select>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">居住城市</span>
+                          <div style="position: relative;">
+                            <input class="city-picker-input" readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" data-simple="true">
+                          </div>
+
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">详细地址</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">邮政区号</span>
+                          <input type="number" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">联络电话</span>
+                          <input type="tel" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                         <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">email地址</span>
+                          <input type="email" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">会员帐号</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">加入市调成员日期</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">会员编号</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">是否公开email</span>
+                          <div class="margint10 width85ptg d-inline-b">
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="email-public" value="y" checked>是</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="email-public" value="n">否</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">目前回文数量</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">目前回文等级</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">目前回文总分</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">最后回文状态</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">最后回文更新时间</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                          <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">争取中的市调商品数量</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                         <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">获选争取市调商的品数量</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                         <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">市调商品投票总数</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                         <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">最后获选参与市调时间</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                         <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">身高</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                         <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">体重</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                         <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">脸部肌肤描述</span>
+                          <!-- <input type="text" name="" > -->
+                          <textarea placeholder="脸部肌肤描述"></textarea>
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                         <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">帐号状态</span>
+                          <input type="text" name="" >
+                         <span class="glyphicon glyphicon-flag info-reminder"></span>
+                         <span class="glyphicon glyphicon-ok info-reminder hide"></span>
+                         <span class="glyphicon glyphicon-remove info-reminder hide"></span>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">是否有子女</span>
+                          <div class="margint10 width85ptg d-inline-b">
+                              <div class="radio-inline radio margint0">
+                                <label><input class="customed-choice" type="radio" name="has-child" value="1" checked>是</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="has-child" value="2">否</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">整体肤质</span>
+                          <div class="margint10 width85ptg d-inline-b">
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="common-skin-type" value="1" checked>干性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="common-skin-type" value="2">中性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="common-skin-type" value="3">油性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="common-skin-type" value="4">混合性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="common-skin-type" value="5">敏感性</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">脸部肤质</span>
+                          <div class="margint10 width85ptg d-inline-b">
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="face-skin-type" value="1" checked>干性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="face-skin-type" value="2">中性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="face-skin-type" value="3">油性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="face-skin-type" value="4">混合性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="face-skin-type" value="5">敏感性</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">身体肤质</span>
+                          <div class="margint10 width85ptg d-inline-b">
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="body-skin-type" value="1" checked>干性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="body-skin-type" value="2">中性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="body-skin-type" value="3">油性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="body-skin-type" value="4">混合性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="body-skin-type" value="5">敏感性</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">发质</span>
+                          <div class="margint10 width85ptg d-inline-b">
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="hair-type" value="1" checked>干性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="hair-type" value="2">中性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="hair-type" value="3">油性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="hair-type" value="4">混合性</label>
+                              </div>
+                              <div class="radio-inline radio margint0 margin-l-0">
+                                <label><input class="customed-choice" type="radio" name="hair-type" value="5">敏感性</label>
+                              </div>
+                          </div>
+
+                      </div>
+                      <div class="info-lines">
+                          <span class="info-label">记点状况备注</span>
+                          <input type="text" name="">
+                      </div>
+                   </div>
+               </section>
+               <div class="bottom-btn-wrap"><a href="views/edit/home_manger.jsp"><button class="btn btn-primary">创建完成</button></a></div>
+           </div>
+    </div>
+ 
+
+
+
+
+
+</body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
+<!-- <script src="js/jquery.wysiwyg.js"></script> -->
+<!-- <script src="js/jquery.checkbox.min.js"></script> -->
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/custom.js"></script>
+<!-- <script src="js/cycle.js"></script> -->
+<script src="js/city-picker.data.js"></script>
+<script src="js/city-picker.js"></script>
+<script type="text/javascript">
+  $(function() {
+      //日期选择
+      $(".form_datetime").datetimepicker({
+        minView: "month",
+        language:  'zh-CN',
+        format: 'yyyy-mm-dd',
+        todayBtn:  1,
+        autoclose: 1,
+      });
+
+      //城市选择
+      $("#city-picker1").citypicker();
+      
+  })
+</script>
+</html>

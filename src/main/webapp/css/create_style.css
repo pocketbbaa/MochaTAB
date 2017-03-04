@@ -1,0 +1,182 @@
+*{
+	margin:0;
+	padding: 0;
+	/*box-sizing: border-box;*/
+}
+.hide{
+	display: none;
+}
+.margint0{
+	margin-top: 0!important;
+}
+.margint10{
+	margin-top: 10px!important;
+}
+.margin-l-0{
+	margin-left: 0!important;
+}
+.width85ptg{
+	width: 85%;
+}
+.d-inline-b{
+	display: inline-block;
+}
+a,a:hover{
+	text-decoration: none;
+}
+
+input.input-disabled{
+	background: #f1f1f1;
+	border-color: #ddd!important;
+}
+
+
+
+/* css goes here */
+.info-lines{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	/*background: yellow;*/
+	margin-bottom: 20px;
+	/*overflow-x: hidden;*/
+	font-size: 20px;
+}
+.info-lines span.info-label{
+	display: block;
+	line-height: 30px;
+}
+.info-lines span.info-reminder{
+	display: inline-block;
+	font-size: 30px;
+	color: #000;
+	width: auto;
+	padding-left: 10px;
+}
+.glyphicon:before{
+	font-size: 15px;
+}
+.glyphicon-flag:before{
+	color: #f00;
+}
+.glyphicon-ok:before{
+	color: #009100;
+}
+.glyphicon-remove:before{
+	color: #f00;
+}
+.info-lines input[type="text"],
+.info-lines input[type="number"],
+.info-lines input[type="tel"],
+.info-lines input[type="email"]{
+	width: 85%;
+	height: 37px;
+	border-width: 1px
+}
+.info-lines input[type="text"]{
+	text-indent: 8px;
+}
+.info-lines textarea{
+	width: 85%;
+	height: 100px;
+	border-width: 1px;
+	resize: none;
+}
+
+
+
+
+input.customed-choice{
+	width: 20px;
+	height: 20px;
+	margin-left: 15px!important;
+	margin-right: 15px!important;
+	position: static!important;
+
+}
+.customed-select{
+	width: 85%;
+	margin-top: 5px;
+	font-size: 18px;
+}
+.customed-select option{
+	font-size: 18px;
+}
+.bottom-btn-wrap{
+	padding-top: 20px;
+	padding-bottom: 50px;
+	text-align: center;
+}
+.bottom-btn-wrap button{
+	padding: 8px 12px;
+}
+
+
+.city-picker-span{
+	width: 85%!important;
+	border: 1px solid #e3e3e3;
+}
+
+
+
+/* 用户头像 */
+/*.top-area{
+	font-size: 25px;
+	margin-top: 20px;
+	margin-bottom:50px;
+	padding: 25px;
+	position: relative;
+}
+.top-area-inner{
+	width:90%;
+	margin:0 auto
+}
+.top-area-inner>div{
+	width: 85%;
+}
+.top-area-inner>div h2{
+	margin: 0;
+}
+.top-area-inner>div img{
+	position: absolute;
+	right: 10px;
+	top: -20px;
+	width: 120px
+}
+
+
+@media only screen and (min-width: 768px), only screen and (min-device-width: 768px){
+	.top-area{
+		margin-bottom: 100px;
+		margin-top: 100px;
+		font-size: 30px
+	}
+
+	.top-area-inner>div h2{
+		text-indent: 100px
+		
+	}
+	.top-area-inner>div img{
+		right: 100px;
+		top: -100px;
+		width: 200px
+	}
+}
+@media only screen and (min-width: 1200px), only screen and (min-device-width: 1200px){
+	.top-area{
+		margin-bottom: 150px;
+		margin-top: 150px;
+		font-size: 45px;
+		font-weight: bold;
+	}
+
+	.top-area-inner>div h2{
+		text-indent: 300px
+		
+	}
+	.top-area-inner>div img{
+		right: 300px;
+		top: -100px;
+		width: 250px
+	}
+}*/

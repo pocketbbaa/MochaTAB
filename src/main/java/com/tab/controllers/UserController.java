@@ -49,7 +49,7 @@ public class UserController {
         }
         User user = userService.getByID(ID);
         if (user != null) {
-            session.setAttribute("manager", user);
+            session.setAttribute("user", user);
         }
         return "user/home_user";
     }
@@ -64,6 +64,7 @@ public class UserController {
      * @param password
      * @return
      */
+    @ValidateLogin
     @Post("/add")
     public String add(Model model, @Param("mochaUserID") String mochaUserID, @Param("username") String username, @Param("password") String password) {
 
@@ -104,6 +105,7 @@ public class UserController {
      * @param model
      * @return
      */
+    @ValidateLogin
     @Get("/list")
     public String getList(Model model) {
         List<User> userList = userService.getUserList();
@@ -121,6 +123,7 @@ public class UserController {
      * @param id
      * @return
      */
+    @ValidateLogin
     @Get("/delete/{id}")
     public String delete(Model model, @Param("id") Integer id) {
 
@@ -140,6 +143,7 @@ public class UserController {
      * @param session
      * @return
      */
+    @ValidateLogin
     @Get("/exit")
     public String exit(HttpSession session) {
         session.removeAttribute("user");
