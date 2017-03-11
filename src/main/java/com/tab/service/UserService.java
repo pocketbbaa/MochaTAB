@@ -1,6 +1,7 @@
 package com.tab.service;
 
 import com.tab.model.User;
+import com.tab.model.UserData;
 
 import java.util.List;
 
@@ -16,6 +17,14 @@ public interface UserService {
      * @return
      */
     boolean add(Integer mochaUserID, String username, String password);
+
+    /**
+     * 添加用户数据初始化
+     *
+     * @param userData
+     * @return
+     */
+    boolean addUserDate(UserData userData);
 
     /**
      * 判断抹茶ID是否存在
@@ -64,4 +73,20 @@ public interface UserService {
      * @return
      */
     User getByID(int id);
+
+    /**
+     * 根据用户ID获取用户data数据
+     *
+     * @param userId
+     * @return
+     */
+    UserData getUserDataByUserId(int userId);
+
+    /**
+     * 更新用户信息
+     *
+     * @param userData
+     * @return
+     */
+    boolean updateUserDate(UserData userData);
 }

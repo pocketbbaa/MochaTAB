@@ -19,13 +19,13 @@
     <section class="widget">
         <div class="content">
             <div style="margin-left: 20%">
-                <form class="form-horizontal" enctype="multipart/form-data" action="${ctx}/user/data/update" method="post">
+                <form class="form-horizontal" enctype="multipart/form-data" action="${ctx}/user/data" method="post">
 
                     <div class="form-group" style="height: 45px; margin-top: 10px;">
                         <label for="name" class="col-sm-2 control-label">真实姓名</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="name"
-                                   value="${userData.name}"
+                                   placeholder="真实姓名"
                                    style="width: 250px;" name="name">
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         <label for="phone" class="col-sm-2 control-label">电话号码</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="phone"
-                                   value="${userData.phone}"
+                                   placeholder="电话号码"
                                    style="width: 250px;" name="phone">
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <label for="postCode" class="col-sm-2 control-label">邮编</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="postCode"
-                                   value="${userData.postCode}"
+                                   placeholder="邮编"
                                    style="width: 250px;" name="postCode">
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <label for="address" class="col-sm-2 control-label">详细住址</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="address"
-                                   value="${userData.address}"
+                                   placeholder="详细住址"
                                    style="width: 250px;" name="address">
                         </div>
                     </div>
@@ -61,16 +61,8 @@
                         <label class="col-sm-2 control-label">性别</label>
                         <div class="col-sm-10" style="width: 250px;">
                             <select class="form-control customed-select" style="border-color: #0f7864" name="six">
-                                <c:choose>
-                                    <c:when test="${userData.six == 0}">
-                                        <option value="0">女</option>
-                                        <option value="1">男</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="1">男</option>
-                                        <option value="0">女</option>
-                                    </c:otherwise>
-                                </c:choose>
+                                <option value="0">女</option>
+                                <option value="1">男</option>
                             </select>
                         </div>
                     </div>
@@ -79,7 +71,7 @@
                         <label for="birthday" class="col-sm-2 control-label">生日</label>
                         <div class="col-sm-10">
                             <input style="width: 250px;" type="text" size="16" class="form_datetime" readonly
-                                   name="birthday" id="birthday" value="${userData.birthday}">
+                                   placeholder="生日" name="birthday" id="birthday">
                             <span class="glyphicon glyphicon-flag info-reminder hide"></span>
                             <span class="glyphicon glyphicon-ok info-reminder"></span>
                             <span class="glyphicon glyphicon-remove info-reminder hide"></span>
@@ -90,11 +82,11 @@
                         <label class="col-sm-2 control-label">身体肌肤</label>
                         <div class="col-sm-10" style="width: 250px;">
                             <select class="form-control customed-select" style="border-color: #953b39" name="bodySkin">
-                                <option <c:if test="${userData.bodySkin == 1}">selected = "selected"</c:if> value="1">干性</option>
-                                <option <c:if test="${userData.bodySkin == 2}">selected = "selected"</c:if> value="2">中性</option>
-                                <option <c:if test="${userData.bodySkin == 3}">selected = "selected"</c:if> value="3">油性</option>
-                                <option <c:if test="${userData.bodySkin == 4}">selected = "selected"</c:if> value="4">混合性</option>
-                                <option <c:if test="${userData.bodySkin == 5}">selected = "selected"</c:if> value="5">敏感性</option>
+                                <option value="1">干性</option>
+                                <option value="2">中性</option>
+                                <option value="3">油性</option>
+                                <option value="4">混合性</option>
+                                <option value="5">敏感性</option>
                             </select>
                         </div>
                     </div>
@@ -104,7 +96,7 @@
                         <div class="col-sm-10" style="width: 300px;">
                             <div style="position: relative;">
                                 <input class="city-picker-input" readonly type="text" data-toggle="city-picker"
-                                      value="${userData.city}" data-level="city" data-simple="true" name="city">
+                                       placeholder="请选择省/市" data-level="city" data-simple="true" name="city">
                             </div>
                         </div>
                     </div>
@@ -113,7 +105,7 @@
                         <label for="email" class="col-sm-2 control-label">邮件地址</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="email"
-                                   value="${userData.email}"
+                                   placeholder="邮件地址"
                                    style="width: 250px;" name="email">
                         </div>
                     </div>
@@ -121,16 +113,8 @@
                         <label class="col-sm-2 control-label">是否公开邮件</label>
                         <div class="col-sm-10" style="width: 250px;">
                             <select class="form-control customed-select" style="border-color: #47a447" name="bodySkin">
-                                <c:choose>
-                                    <c:when test="${userData.emailPublic == 1}">
-                                        <option value="1">是</option>
-                                        <option value="0">否</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="1">是</option>
-                                        <option value="0">否</option>
-                                    </c:otherwise>
-                                </c:choose>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
                             </select>
                         </div>
                     </div>
@@ -139,23 +123,23 @@
                         <label class="col-sm-2 control-label">发质</label>
                         <div class="col-sm-10" style="width: 250px;">
                             <select class="form-control customed-select" style="border-color: #953b39" name="hairSkin">
-                                <option <c:if test="${userData.hairSkin == 1}">selected = "selected"</c:if> value="1">干性</option>
-                                <option <c:if test="${userData.hairSkin == 2}">selected = "selected"</c:if> value="2">中性</option>
-                                <option <c:if test="${userData.hairSkin == 3}">selected = "selected"</c:if> value="3">油性</option>
-                                <option <c:if test="${userData.hairSkin == 4}">selected = "selected"</c:if> value="4">混合性</option>
-                                <option <c:if test="${userData.hairSkin == 5}">selected = "selected"</c:if> value="5">敏感性</option>
+                                <option value="1">干性</option>
+                                <option value="2">中性</option>
+                                <option value="3">油性</option>
+                                <option value="4">混合性</option>
+                                <option value="5">敏感性</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group" style="height: 45px; margin-top: 10px;">
                         <label class="col-sm-2 control-label">脸部肌肤</label>
                         <div class="col-sm-10" style="width: 250px;">
-                            <select class="form-control customed-select" style="border-color: #953b39" name="faceSkin" >
-                                <option <c:if test="${userData.faceSkin == 1}">selected = "selected"</c:if> value="1">干性</option>
-                                <option <c:if test="${userData.faceSkin == 2}">selected = "selected"</c:if> value="2">中性</option>
-                                <option <c:if test="${userData.faceSkin == 3}">selected = "selected"</c:if> value="3">油性</option>
-                                <option <c:if test="${userData.faceSkin == 4}">selected = "selected"</c:if> value="4">混合性</option>
-                                <option <c:if test="${userData.faceSkin == 5}">selected = "selected"</c:if> value="5">敏感性</option>
+                            <select class="form-control customed-select" style="border-color: #953b39" name="faceSkin">
+                                <option value="1">干性</option>
+                                <option value="2">中性</option>
+                                <option value="3">油性</option>
+                                <option value="4">混合性</option>
+                                <option value="5">敏感性</option>
                             </select>
                         </div>
                     </div>
@@ -163,11 +147,11 @@
                         <label class="col-sm-2 control-label">整体肤质</label>
                         <div class="col-sm-10" style="width: 250px;">
                             <select class="form-control customed-select" style="border-color: #953b39" name="wholeSkin">
-                                <option <c:if test="${userData.wholeSkin == 1}">selected = "selected"</c:if> value="1">干性</option>
-                                <option <c:if test="${userData.wholeSkin == 2}">selected = "selected"</c:if> value="2">中性</option>
-                                <option <c:if test="${userData.wholeSkin == 3}">selected = "selected"</c:if> value="3">油性</option>
-                                <option <c:if test="${userData.wholeSkin == 4}">selected = "selected"</c:if> value="4">混合性</option>
-                                <option <c:if test="${userData.wholeSkin == 5}">selected = "selected"</c:if> value="5">敏感性</option>
+                                <option value="1">干性</option>
+                                <option value="2">中性</option>
+                                <option value="3">油性</option>
+                                <option value="4">混合性</option>
+                                <option value="5">敏感性</option>
                             </select>
                         </div>
                     </div>
@@ -175,7 +159,7 @@
                         <label for="faceDescribe" class="col-sm-2 control-label">脸部肌肤描述</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="faceDescribe"
-                                  value="${userData.faceDescribe}"
+                                   placeholder="商品功能"
                                    style="width: 250px;" name="faceDescribe">
                         </div>
                     </div>
@@ -183,17 +167,8 @@
                         <label class="col-sm-2 control-label">是否结婚</label>
                         <div class="col-sm-10" style="width: 250px;">
                             <select class="form-control customed-select" style="border-color: #e3e3e3" name="married">
-                                <c:choose>
-                                    <c:when test="${userData.married == 1}">
-                                        <option value="1">是</option>
-                                        <option value="0">否</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="1">是</option>
-                                        <option value="0">否</option>
-                                    </c:otherwise>
-                                </c:choose>
-
+                                <option value="1">是</option>
+                                <option value="0">否</option>
                             </select>
                         </div>
                     </div>
@@ -202,16 +177,8 @@
                         <div class="col-sm-10" style="width: 250px;">
                             <select class="form-control customed-select" style="border-color: #e3e3e3"
                                     name="haveChildren">
-                                <c:choose>
-                                    <c:when test="${userData.haveChildren == 1}">
-                                        <option value="1">是</option>
-                                        <option value="0">否</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="1">是</option>
-                                        <option value="0">否</option>
-                                    </c:otherwise>
-                                </c:choose>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
                             </select>
                         </div>
                     </div>
@@ -219,7 +186,7 @@
                         <label for="height" class="col-sm-2 control-label">身高</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="height"
-                                   value="${userData.height}"
+                                   placeholder="cm"
                                    style="width: 250px;" name="height">
                         </div>
                     </div>
@@ -227,7 +194,7 @@
                         <label for="weight" class="col-sm-2 control-label">体重</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="weight"
-                                   value="${userData.weight}"
+                                   placeholder="g"
                                    style="width: 250px;" name="weight">
                         </div>
                     </div>
@@ -235,15 +202,14 @@
                     <div class="form-group" style="height: 45px; margin-top: 10px;">
                         <label class="col-sm-2 control-label">工作</label>
                         <div class="col-sm-10" style="width: 250px;">
-                            <select class="form-control customed-select" style="border-color: #e3e3e3" name="job">
-                                <option <c:if test="${userData.job == 0}">selected = "selected"</c:if> value="0">农林牧渔业</option>
-                                <option <c:if test="${userData.job == 1}">selected = "selected"</c:if> value="1">农林牧渔业</option>
-                                <option <c:if test="${userData.job == 2}">selected = "selected"</c:if> value="2">制造业（不含资讯电脑业）</option>
-                                <option <c:if test="${userData.job == 3}">selected = "selected"</c:if> value="3">咨询工业</option>
-                                <option <c:if test="${userData.job == 4}">selected = "selected"</c:if> value="4">咨询服务业</option>
-                                <option <c:if test="${userData.job == 5}">selected = "selected"</c:if> value="5">营造业</option>
-                                <option <c:if test="${userData.job == 6}">selected = "selected"</c:if> value="6">商业</option>
-                                <option <c:if test="${userData.job == 7}">selected = "selected"</c:if> value="7">运输业</option>
+                            <select class="form-control customed-select" style="border-color: #e3e3e3" name="wholeSkin">
+                                <option value="1">农林牧渔业</option>
+                                <option value="2">制造业（不含资讯电脑业）</option>
+                                <option value="3">咨询工业</option>
+                                <option value="4">咨询服务业</option>
+                                <option value="5">营造业</option>
+                                <option value="6">商业</option>
+                                <option value="7">运输业</option>
                             </select>
                         </div>
                     </div>
@@ -252,7 +218,7 @@
                         <label for="remark" class="col-sm-2 control-label">备注</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="remark"
-                                   value="${userData.remark}"
+                                   placeholder="邮件地址"
                                    style="width: 250px;" name="remark">
                         </div>
                     </div>

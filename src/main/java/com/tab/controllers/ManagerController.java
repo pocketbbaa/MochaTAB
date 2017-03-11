@@ -4,6 +4,7 @@ package com.tab.controllers;
 import com.tab.model.Manager;
 import com.tab.service.ManagerService;
 import com.tab.utils.Log4jUtil;
+import com.tab.utils.Threads;
 import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
@@ -42,7 +43,7 @@ public class ManagerController {
     @Post("/login")
     public String login(Model model, @Param("username") String username, @Param("password") String password, HttpSession session) {
 
-        webLog.info("edit/login-> username:" + username + "  password:" + password);
+        webLog.info(Threads.getCallLocation() + ", edit/login-> username:" + username + "  password:" + password);
 
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
             model.add("message", "账号密码错误!");
@@ -50,7 +51,7 @@ public class ManagerController {
         }
         Integer ID = managerService.login(username, password);
 
-        webLog.info("edit/login->UserID:" + ID);
+        webLog.info(Threads.getCallLocation() + ", edit/login->UserID:" + ID);
         System.out.println("ID:" + ID);
         if (ID == null || ID == 0) {
             model.add("message", "账号密码错误!");
@@ -73,9 +74,10 @@ public class ManagerController {
     @ValidateLogin
     @Get("/list")
     public String getManagerList(Model model) {
-
+        webLog.info(Threads.getCallLocation() + ", edit/list-> in getManagerList....");
         List<Manager> managerList = managerService.getList();
         if (CollectionUtils.isEmpty(managerList)) {
+            webLog.info(Threads.getCallLocation() + ", edit/list-> getManagerList -> managerList is null or size = 0");
             return "edit/managers";
         }
         model.add("managerList", managerList);
@@ -95,14 +97,15 @@ public class ManagerController {
     @Post("/add")
     public String add(Model model, @Param("username") String username, @Param("password") String password) {
 
-        System.out.println("username:" + username + "  password:" + password);
-
+        webLog.info(Threads.getCallLocation() + ", edit/add-> username:" + username + "  password:" + password);
         String message = "输入信息有误";
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
+            webLog.info(Threads.getCallLocation() + ", edit/add-> username or password is null or size = 0");
             model.add("message", message);
             return "r:/edit/list";
         }
         if (managerService.userExist(username)) {
+            webLog.info(Threads.getCallLocation() + ", edit/add-> username is exist ...");
             message = "用户名已存在";
             model.add("message", message);
             return "r:/edit/list";
@@ -114,6 +117,7 @@ public class ManagerController {
         manager.setRole(2);
         manager.setCreateTime(new Date());
         if (managerService.add(manager)) {
+            webLog.info(Threads.getCallLocation() + ", edit/add-> add manager success ...");
             message = "添加成功!";
             model.add("message", message);
             return "r:/edit/list";
@@ -132,7 +136,9 @@ public class ManagerController {
     @ValidateLogin
     @Get("/delete/{id}")
     public String delete(Model model, @Param("id") int id) {
+        webLog.info(Threads.getCallLocation() + ", edit/delete-> id = " + id);
         if (managerService.deleteByID(id)) {
+            webLog.info(Threads.getCallLocation() + ", edit/delete-> id = " + id + " delete success!");
             return "r:/edit/list";
         }
         model.add("message", "用户异常，稍后重试");
@@ -148,6 +154,7 @@ public class ManagerController {
     @ValidateLogin
     @Get("/exit")
     public String exit(HttpSession session) {
+        webLog.info(Threads.getCallLocation() + ", edit/exit ... success ");
         session.removeAttribute("user");
         return "r:/index.jsp";
     }

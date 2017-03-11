@@ -1,6 +1,7 @@
 package com.tab.controllers;
 
 import com.tab.model.User;
+import com.tab.model.UserData;
 import com.tab.service.UserService;
 import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
@@ -11,6 +12,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -148,6 +150,84 @@ public class UserController {
     public String exit(HttpSession session) {
         session.removeAttribute("user");
         return "r:/index.jsp";
+    }
+
+
+    @Get("/info")
+    public String getUserDataInfo(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        int userID = user.getId();
+
+        //根据用户ID获取userData信息
+        UserData userData = userService.getUserDataByUserId(userID);
+        if (userData == null) {
+            return "user/edit_user";
+        }
+        model.add("userData", userData);
+        return "user/user_info";
+    }
+
+
+    /**
+     * 提交用户信息修改
+     *
+     * @param model
+     * @param userData
+     * @param session
+     * @return
+     */
+    @ValidateLogin
+    @Post("/data")
+    public String updateData(Model model, UserData userData, HttpSession session) {
+
+        if (userData == null) {
+            model.add("message", "输入信息有误userData == null");
+            return "r:/user/info";
+        }
+        User user = (User) session.getAttribute("user");
+        int userID = user.getId();
+        String nickName = user.getMochaUserName();
+
+        userData.setUserID(userID);
+        userData.setNickName(nickName);
+        userData.setLastFileUpdateTime(new Date());
+        userData.setLastJoinTime(new Date());
+        userData.setCreateTime(new Date());
+
+        boolean success = userService.addUserDate(userData);
+        if (success) {
+            model.add("message", "添加成功");
+            return "r:/user/info";
+        }
+        model.add("message", "添加失败!");
+        return "r:/user/info";
+    }
+
+    /**
+     * 跟新用户信息
+     *
+     * @param model
+     * @param userData
+     * @param session
+     * @return
+     */
+    @ValidateLogin
+    @Post("/data/update")
+    public String updateUserData(Model model, UserData userData, HttpSession session) {
+        if (userData == null) {
+            model.add("message", "输入信息有误userData == null");
+            return "r:/user/info";
+        }
+        User user = (User) session.getAttribute("user");
+        int userID = user.getId();
+        userData.setUserID(userID);
+        boolean success = userService.updateUserDate(userData);
+        if (success) {
+            model.add("message", "修改成功");
+            return "r:/user/info";
+        }
+        model.add("message", "修改失败!");
+        return "r:/user/info";
     }
 
 }

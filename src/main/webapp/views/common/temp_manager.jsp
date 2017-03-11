@@ -11,7 +11,8 @@
         </header>
         <section class="user">
             <div class="profile-img">
-                <p><img src="../../images/uiface2.png" alt="" height="40" width="40"/> 欢迎回来 ${sessionScope.user.username}</p>
+                <p><img src="${ctx}/images/uiface2.png" alt="" height="40" width="40"/>
+                    欢迎回来 ${sessionScope.user.username}</p>
             </div>
             <div class="buttons">
                 <button class="ico-font">&#9206;</button>
@@ -22,13 +23,13 @@
     <nav style="height: auto">
         <ul>
             <li>
-                <a href="../../create_commodity.html"><span class="icon">&#128196;</span> 创建商品资料</a>
+                <a href="${ctx}/product/list"><span class="icon">&#128196;</span> 商品资料库</a>
             </li>
             <li>
-                <a href="../../create_case.jsp"><span class="icon">&#128196;</span> 创建市调专案</a>
+                <a href="${ctx}/case/list"><span class="icon">&#128196;</span> 市调专案</a>
             </li>
             <li>
-                <a href="../../report_check.jsp"><span class="icon">&#59160;</span> 评测报告审核 </a>
+                <a href="${ctx}/report/list"><span class="icon">&#59160;</span> 评测报告审核 </a>
             </li>
             <li>
                 <a href="${ctx}/user/list"><span class="icon">&#128101;</span> 用户管理</a>

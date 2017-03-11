@@ -3,8 +3,10 @@ package com.tab.service.impl;
 import com.tab.dao.mocha.MochaUserDAO;
 import com.tab.dao.tab.UserDAO;
 import com.tab.model.User;
+import com.tab.model.UserData;
 import com.tab.model.UserMocha;
 import com.tab.service.UserService;
+import com.tab.utils.Log4jUtil;
 import com.tab.utils.PhotoUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,21 @@ public class UserServiceImpl implements UserService {
         try {
             userDAO.add(user);
         } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean addUserDate(UserData userData) {
+        if (userData == null) {
+            return false;
+        }
+        try {
+            userDAO.addUserData(userData);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log4jUtil.exception(e);
             return false;
         }
         return true;
@@ -96,6 +113,23 @@ public class UserServiceImpl implements UserService {
         User user = userDAO.getByID(id);
         user.setMochaUserPic(PhotoUtil.getDomainPic(user.getMochaUserPic()));
         return user;
+    }
+
+    @Override
+    public UserData getUserDataByUserId(int userId) {
+        return userDAO.getUserDataByUserID(userId);
+    }
+
+    @Override
+    public boolean updateUserDate(UserData userData) {
+        try{
+            userDAO.updateUserDate(userData);
+        }catch (Exception e){
+            e.printStackTrace();
+            Log4jUtil.exception(e);
+            return false;
+        }
+        return true;
     }
 
 

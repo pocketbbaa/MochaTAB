@@ -8,12 +8,12 @@ import java.util.Date;
 public class User {
 
     private int id;
-    private int mochaID;
-    private String mochaUserName;
-    private String mochaUserPic;
-    private String tabUserName;
-    private String tabPassWord;
-    private Date createTime;
+    private int mochaID; //抹茶ID
+    private String mochaUserName; //抹茶用户名
+    private String mochaUserPic;  //抹茶头像
+    private String tabUserName;   //tab登陆用户名
+    private String tabPassWord;   //tab登陆密码
+    private Date createTime;      //创建时间
 
     public int getId() {
         return id;
