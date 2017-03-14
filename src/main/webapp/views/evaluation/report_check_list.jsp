@@ -16,8 +16,10 @@
             <c:forEach items="${reportList}" var="report">
                 <div class="tl-post">
                     <span class="icon">&#59185;</span>
-                    <a href="${ctx}/report/info/${report.reportID}"><p>${report.title} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${report.username} <span
-                            class="time">${report.createTime}</span>
+                    <a href="${ctx}/report/info/${report.reportID}"><p style="width: 80%"><img style="width: 50px;height: 50px;" src="${report.mochaUserPic}">
+                        <span class="time">${report.username}</span>
+                        <span class="time" style="color: #942a25">${report.title} 评测报告</span>
+                        <span class="time">提交时间： ${report.createTime}</span>
                     </p></a>
                 </div>
             </c:forEach>

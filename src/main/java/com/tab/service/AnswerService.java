@@ -1,6 +1,7 @@
 package com.tab.service;
 
 import com.tab.model.Answer;
+import com.tab.vo.QAnswerVO;
 
 import java.util.List;
 
@@ -16,5 +17,18 @@ public interface AnswerService {
      */
     boolean addList(List<Answer> answerList);
 
+    /**
+     * 根据用户ID市调ID获取题目详情和回答
+     * @param userID
+     * @param caseID
+     * @return
+     */
+    List<QAnswerVO> getQAByUserIDAndCaseID(int userID, int caseID);
 
+    /**
+     * 删除回答
+     * @param userID
+     * @param caseID
+     */
+    void deleteByUserIDAndCaseID(int userID, int caseID);
 }

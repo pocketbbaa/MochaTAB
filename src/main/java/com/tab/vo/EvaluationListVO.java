@@ -18,6 +18,24 @@ public class EvaluationListVO {
     private Date createTime;
     private int productId;
 
+    private int pass; //是否通过审核
+    private String noPassStr;
+
+    public int getPass() {
+        return pass;
+    }
+
+    public void setPass(int pass) {
+        this.pass = pass;
+    }
+
+    public String getNoPassStr() {
+        return noPassStr;
+    }
+
+    public void setNoPassStr(String noPassStr) {
+        this.noPassStr = noPassStr;
+    }
 
     public int getProductId() {
         return productId;
@@ -82,7 +100,12 @@ public class EvaluationListVO {
                 "id=" + id +
                 ", picURL='" + picURL + '\'' +
                 ", title='" + title + '\'' +
+                ", startDate=" + startDate +
+                ", EndDate=" + EndDate +
                 ", createTime=" + createTime +
+                ", productId=" + productId +
+                ", pass=" + pass +
+                ", noPassStr='" + noPassStr + '\'' +
                 '}';
     }
 }

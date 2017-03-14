@@ -1,5 +1,7 @@
 package com.tab.vo;
 
+import com.tab.utils.FileUploadUtil;
+
 import java.util.Date;
 
 /**
@@ -11,7 +13,16 @@ public class ReportListVO {
     private int reportID;
     private String title;
     private String username;
+    private String mochaUserPic;
     private Date createTime;
+
+    public String getMochaUserPic() {
+        return mochaUserPic;
+    }
+
+    public void setMochaUserPic(String mochaUserPic) {
+        this.mochaUserPic = FileUploadUtil.getDomainPic(mochaUserPic);
+    }
 
     public int getReportID() {
         return reportID;

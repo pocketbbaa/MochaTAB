@@ -12,6 +12,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -152,7 +153,14 @@ public class UserController {
         return "r:/index.jsp";
     }
 
-
+    /**
+     * 获取用户详情
+     *
+     * @param model
+     * @param session
+     * @return
+     */
+    @ValidateLogin
     @Get("/info")
     public String getUserDataInfo(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -163,10 +171,18 @@ public class UserController {
         if (userData == null) {
             return "user/edit_user";
         }
+
+        Date date = userData.getBirthday();
+
+        if(date != null){
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String birthday = simpleDateFormat.format(date);
+            model.add("birthday", birthday);
+        }
+
         model.add("userData", userData);
         return "user/user_info";
     }
-
 
     /**
      * 提交用户信息修改

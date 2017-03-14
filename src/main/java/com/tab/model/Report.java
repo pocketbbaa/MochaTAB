@@ -8,6 +8,7 @@ import java.util.Date;
  */
 public class Report {
 
+
     private int id;
     private int evaluate; //评价 1:很好，2：好，3：普通，4：差，5：很差
     private int productId; //商品ID
@@ -16,6 +17,8 @@ public class Report {
     private String experience; //用户心得
     private String experiencePicUrl; //心得图片（用‘#’隔开）
     private Date createTime;
+    private int pass; // 是否审核通过（1：通过，0：未审核，2：未通过）
+    private String noPassStr; //没有通过审核原因
 
 
     @Override

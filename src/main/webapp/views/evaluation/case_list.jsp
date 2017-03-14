@@ -18,18 +18,18 @@
     </a></div>
     <section class="widget">
         <div class="content no-padding timeline">
-
             <c:forEach items="${evaluationList}" var="evaluation">
                 <div class="tl-post">
                     <span class="icon">&#59185;</span>
-                    <a href="${ctx}/case/${evaluation.id}/info"><p style="width: 50%;"><img style="width: 200px;height: 100px;" src="${evaluation.picURL}"
-                                                                                            alt="...">${evaluation.title}
-                        <span
-                                class="time">${evaluation.createTime}</span>
+                    <a href="${ctx}/case/${evaluation.id}/info"><p style="width: 80%;"><img style="width: 150px;height: 70px;" src="${evaluation.picURL}"
+                                                                                            alt="...">
+                        <span class="time" style="color: darkolivegreen">${evaluation.title}</span>
+                        <span class="time">开始时间：${evaluation.startDate}</span>
+                        <span class="time">结束时间${evaluation.endDate}</span>
+                        <span class="time">专案创建时间：${evaluation.createTime}</span>
                     </p></a>
                 </div>
             </c:forEach>
-
         </div>
     </section>
 </div>

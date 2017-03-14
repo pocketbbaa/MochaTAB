@@ -29,7 +29,11 @@
             <li>
                 <a href="${ctx}/case/list/user"><span class="icon">&#127748;</span> 评测报告 </a>
             </li>
+            <li>
+                <a href="${ctx}/case/list/user/nopass"><span class="icon">&#127748;</span> 未通过审核报告 </a>
+            </li>
             <li><a href="${ctx}/user/info"><span class="icon">&#128101;</span> 个人中心 </a></li>
+            <div style="width: auto;height: auto"></div>
         </ul>
     </nav>
 </head>

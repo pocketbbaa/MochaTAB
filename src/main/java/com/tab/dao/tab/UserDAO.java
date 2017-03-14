@@ -4,6 +4,7 @@ import com.tab.model.User;
 import com.tab.model.UserData;
 import net.paoding.rose.jade.annotation.DAO;
 import net.paoding.rose.jade.annotation.SQL;
+import net.paoding.rose.jade.annotation.SQLParam;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ public interface UserDAO {
     String USER_DATA_PARAM = "ID,UserID,Name,NickName,Phone,PostCode,Six,Address," +
             "ApplyNum,Birthday,BodySkin,City,Email,EmailPublic,HairSkin,FaceSkin,WholeSkin," +
             "FaceDescribe,FileLevel,FileNum,FileScore,GetApplyNum,Married,HaveChildren,Height,Weight," +
-            "Job,LastFileStat,LastFileUpdateTime,LastJoinTime,VoteNum,Status,Remark,CreateTime";
+            "Job,LastFileStat,LastFileUpdateTime,LastJoinTime,VoteNum,Status,Remark,CreateTime,AgeScope";
 
     /**
      * 添加用户
@@ -77,12 +78,12 @@ public interface UserDAO {
             "FaceSkin,WholeSkin," +
             "FaceDescribe,Married,HaveChildren," +
             "Height,Weight,Job," +
-            "LastFileUpdateTime,LastJoinTime,Remark,CreateTime) " +
+            "LastFileUpdateTime,LastJoinTime,Remark,CreateTime,AgeScope) " +
             "VALUES " +
             "(:1.userID,:1.name,:1.nickName,:1.phone,:1.postCode,:1.six," +
             ":1.address,:1.birthday,:1.bodySkin,:1.city,:1.email,:1.emailPublic," +
             ":1.hairSkin,:1.faceSkin,:1.wholeSkin,:1.faceDescribe,:1.married," +
-            ":1.haveChildren,:1.height,:1.weight,:1.job,:1.lastFileUpdateTime,:1.lastJoinTime,:1.remark,:1.createTime)")
+            ":1.haveChildren,:1.height,:1.weight,:1.job,:1.lastFileUpdateTime,:1.lastJoinTime,:1.remark,:1.createTime,:1.ageScope)")
     void addUserData(UserData userData);
 
     /**
@@ -155,6 +156,7 @@ public interface UserDAO {
     @SQL("UPDATE user_data " +
             "SET " +
             "Phone = :1.phone," +
+            "AgeScope = :1.ageScope," +
             "PostCode = :1.postCode," +
             "Six = :1.six," +
             "Address = :1.address," +
@@ -176,4 +178,19 @@ public interface UserDAO {
             "Job = :1.job," +
             "Remark = :1.remark WHERE UserID = :1.userID")
     void updateUserDate(UserData userData);
+
+    /**
+     * 更新用户统计数据
+     *
+     * @param userID
+     * @param sqlFileNum
+     * @param sqlFileScore
+     * @param sqlGetApplyNum
+     * @param sqlVoteNum
+     */
+    @SQL("UPDATE user_data " +
+            "SET ##(:sqlFileNum),##(:sqlFileScore),##(:sqlGetApplyNum),##(:sqlVoteNum) WHERE UserID = :userID")
+    void updateDate(@SQLParam("userID") int userID, @SQLParam("sqlFileNum") String sqlFileNum,
+                    @SQLParam("sqlFileScore") String sqlFileScore,
+                    @SQLParam("sqlGetApplyNum") String sqlGetApplyNum, @SQLParam("sqlVoteNum") String sqlVoteNum);
 }

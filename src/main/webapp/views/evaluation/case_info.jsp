@@ -26,7 +26,7 @@
         <div class="col-sm-10">
             <input type="text" class="form-control" id="title"
                    placeholder="${evaluation.title}"
-                   style="width: 250px;" name="title">
+                   style="width: 250px;" name="title" disabled="true">
         </div>
     </div>
 
@@ -115,7 +115,7 @@
 
     <div class="form-group" id="bottom-btn-wrap" style="height: 45px; margin-top: 180px;">
         <div class="col-sm-offset-2 col-sm-10">
-            <button style="width:300px;" type="submit" class="btn btn-success">立即分配</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button style="width:300px;" type="submit" class="btn btn-success">修改确认</button>
+            <%--<button style="width:300px;" type="submit" class="btn btn-success">立即分配</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button style="width:300px;" type="submit" class="btn btn-success">修改确认</button>--%>
         </div>
     </div>
 </div>
@@ -143,6 +143,24 @@
         <label for="totalGrade" class="col-sm-2 control-label">滿意度總分</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="totalGrade"
+                   placeholder="${evaluation.totalGrade}"
+                   style="width: 250px;" name="totalGrade">
+        </div>
+    </div>
+
+    <div class="form-group" style="height: 45px; margin-top: 10px;">
+        <label for="avgGrade" class="col-sm-2 control-label">小题目平均分</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="avgGrade"
+                   placeholder="85"
+                   style="width: 250px;" name="totalGrade">
+        </div>
+    </div>
+
+    <div class="form-group" style="height: 45px; margin-top: 10px;">
+        <label for="star" class="col-sm-2 control-label">换算星级得分</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="star"
                    placeholder="85"
                    style="width: 250px;" name="totalGrade">
         </div>
@@ -165,11 +183,11 @@
     function init() {
         // Pie chart
         var data = [
-            {label: "满意度为很好的人数", data: 50, color: "orange"},
-            {label: "满意度为好的人数", data: 40, color: "#9bc747"},
-            {label: "满意度为普通的人数", data: 10, color: "#208ed3"},
-            {label: "满意度为差的人数", data: 10, color: "#208ed4"},
-            {label: "满意度为很差的人数", data: 10, color: "#208ed7"}
+            {label: "满意度为很好的人数:${evaluation.item1amount}", data: ${evaluation.item1amount}, color: "orange"},
+            {label: "满意度为好的人数:${evaluation.item2amount}", data: ${evaluation.item2amount}, color: "#9bc747"},
+            {label: "满意度为普通的人数:${evaluation.item3amount}", data: ${evaluation.item3amount}, color: "#208ed3"},
+            {label: "满意度为差的人数:${evaluation.item4amount}", data: ${evaluation.item4amount}, color: "red"},
+            {label: "满意度为很差的人数:${evaluation.item5amount}", data: ${evaluation.item5amount}, color: "purple"}
         ];
 
         $.plot($(".pie"), data, {

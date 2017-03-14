@@ -4,6 +4,7 @@ import com.tab.dao.tab.AnswerDAO;
 import com.tab.model.Answer;
 import com.tab.service.AnswerService;
 import com.tab.utils.Log4jUtil;
+import com.tab.vo.QAnswerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -33,5 +34,15 @@ public class AnswerServiceImpl implements AnswerService {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public List<QAnswerVO> getQAByUserIDAndCaseID(int userID, int caseID) {
+        return answerDAO.getQAByUserIDAndCaseID(userID, caseID);
+    }
+
+    @Override
+    public void deleteByUserIDAndCaseID(int userID, int caseID) {
+        answerDAO.deleteByUserIDAndCaseID(userID,caseID);
     }
 }

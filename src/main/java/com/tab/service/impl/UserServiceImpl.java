@@ -132,5 +132,12 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    @Override
+    public void updateDate(int userID, String sqlFileNum, String sqlFileScore, String sqlGetApplyNum, String sqlVoteNum) {
+
+        userDAO.updateDate(userID,sqlFileNum,sqlFileScore,sqlGetApplyNum,sqlVoteNum);
+
+    }
+
 
 }

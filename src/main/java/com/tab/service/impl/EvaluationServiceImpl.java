@@ -66,13 +66,28 @@ public class EvaluationServiceImpl implements EvaluationService {
     }
 
     @Override
-    public List<EvaluationListVO> getList() {
-        return evaluationDAO.getList();
+    public List<EvaluationListVO> getList(int userID) {
+        return evaluationDAO.getList(userID);
     }
 
     @Override
     public Evaluation getByID(int id) {
         return evaluationDAO.getByID(id);
+    }
+
+    @Override
+    public List<EvaluationListVO> getListByManager() {
+        return evaluationDAO.getListByManager();
+    }
+
+    @Override
+    public List<EvaluationListVO> getListNoPass(int userID) {
+        return evaluationDAO.getListNoPass(userID);
+    }
+
+    @Override
+    public void updateEvaluation(String whereAmount, String whereTotalGrade, String whereExper, String whereAnswerScore, String whereJoinNum,int reportID) {
+        evaluationDAO.updateEvaluation(whereAmount, whereTotalGrade, whereExper, whereAnswerScore, whereJoinNum,reportID);
     }
 
     public static void main(String[] args) {

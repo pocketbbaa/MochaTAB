@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.POST;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,6 +46,8 @@ public class EvaluationController {
     private AnswerService answerService;
     @Autowired
     private ReportService reportService;
+    @Autowired
+    private UserService userServicel;
 
     /**
      * 获取商品列表
@@ -122,11 +125,11 @@ public class EvaluationController {
      */
     @ValidateLogin
     @Get("/list")
-    public String getList(Model model) {
+    public String getList(Model model, HttpSession session) {
 
         webLog.info(Threads.getCallLocation() + ", in case/list ...");
         System.out.println("in case list ...");
-        List<EvaluationListVO> evaluationListVOList = evaluationService.getList();
+        List<EvaluationListVO> evaluationListVOList = evaluationService.getListByManager();
 
         for (EvaluationListVO vo : evaluationListVOList) {
             System.out.println(vo);
@@ -181,6 +184,13 @@ public class EvaluationController {
         if (!CollectionUtils.isEmpty(IDs)) {
             List<Question> questionList = questionService.getQuestionByIDs(IDs);
             if (!CollectionUtils.isEmpty(questionList)) {
+                List<Question> removeQ = new ArrayList<>();
+                for (Question question : questionList) {
+                    if (question == null || StringUtils.isEmpty(question.getDes())) {
+                        removeQ.add(question);
+                    }
+                }
+                questionList.removeAll(removeQ);
                 model.add("questions", questionList);
             }
         }
@@ -197,11 +207,50 @@ public class EvaluationController {
      */
     @ValidateLogin
     @Get("/list/user")
-    public String getListForUser(Model model) {
+    public String getListForUser(Model model, HttpSession session) {
+
+        //过滤已经参与过评测的列表，
+        //未通过审核报告
         webLog.info(Threads.getCallLocation() + ", in case/list/user ...");
-        List<EvaluationListVO> evaluationListVOList = evaluationService.getList();
+        User user = (User) session.getAttribute("user");
+
+        int userID = user.getId();
+        //获取用户data
+        UserData userData = userServicel.getUserDataByUserId(userID);
+        if (userData == null) {
+            model.add("message", "请在参与测评前完善个人资料，不然无法参与测评!");
+            return "user/case_list";
+        }
+
+        List<EvaluationListVO> evaluationListVOList = evaluationService.getList(userID);
+        if (CollectionUtils.isEmpty(evaluationListVOList)) {
+            model.add("message", "目前还没有可参与的评测");
+            return "user/case_list";
+        }
         model.add("evaluationList", evaluationListVOList);
         return "user/case_list";
+    }
+
+    /**
+     * 未通过的评测列表 pass = 2
+     *
+     * @param model
+     * @param session
+     * @return
+     */
+    @ValidateLogin
+    @Get("/list/user/nopass")
+    public String getListNoPass(Model model, HttpSession session) {
+
+        User user = (User) session.getAttribute("user");
+        int userID = user.getId();
+        List<EvaluationListVO> evaluationListVOList = evaluationService.getListNoPass(userID);
+        if (CollectionUtils.isEmpty(evaluationListVOList)) {
+            model.add("message", "没有未通过的评测");
+            return "user/no_pass_case_list";
+        }
+        model.add("evaluationList", evaluationListVOList);
+        return "user/no_pass_case_list";
     }
 
     /**
@@ -237,6 +286,13 @@ public class EvaluationController {
         if (!CollectionUtils.isEmpty(IDs)) {
             List<Question> questionList = questionService.getQuestionByIDs(IDs);
             if (!CollectionUtils.isEmpty(questionList)) {
+                List<Question> remove = new ArrayList<>();
+                for (Question q : questionList) {
+                    if (q == null || StringUtils.isEmpty(q.getDes())) {
+                        remove.add(q);
+                    }
+                }
+                questionList.removeAll(remove);
                 model.add("questions", questionList);
             }
         }
@@ -270,6 +326,17 @@ public class EvaluationController {
         int userID = reportVO.getUserID();
         int productID = reportVO.getProductID();
 
+        //根据caseID，userID获取报告，如果没有获取到，走添加流程，如果获取成功，删除报告和回答 TODO
+        System.out.println("userID:" + userID + "  caseID:" + caseID);
+        int reportId = reportService.getIDByCaseIDAndUserID(caseID, userID);
+        System.out.println("reportId:" + reportId);
+        if (reportId != 0) {
+            //1、删除report；
+            reportService.deleteReportById(reportId);
+            //2、删除回答;
+            answerService.deleteByUserIDAndCaseID(userID, caseID);
+        }
+
         // 获取小题目回答，并存库
         List<Answer> answerList = new ArrayList<>();
         int[] questionIDs = reportVO.getQuestionIDs(); //获取问题IDs
@@ -295,13 +362,14 @@ public class EvaluationController {
                         if (fileName.startsWith("picUrl")) {
                             //获取文件名字后缀
                             if (StringUtils.isNotEmpty(file.getOriginalFilename())) {
-                                String questionIDStr = fileName.substring(fileName.getBytes().length - 1);
+                                String questionIDStr = fileName.split("_")[1];
                                 if (StringUtils.isNotEmpty(questionIDStr)) {
                                     int questionID = Integer.parseInt(questionIDStr);
                                     if (questionID == questionIDs[i]) {
                                         //上传文件 TODO 目前每题一张图片
                                         try {
                                             String filePath = FileUploadUtil.uploadImg(file.getBytes(), FileUploadUtil.getFileName(file.getOriginalFilename())); //文件上传
+                                            System.out.println("小题目图片:" + filePath);
                                             if (StringUtils.isNotEmpty(filePath)) {
                                                 answer.setPicUrls(filePath);
                                             }
@@ -338,7 +406,7 @@ public class EvaluationController {
 
         String experiencePicUrl = "";
         for (MultipartFile file : fileExList) {
-            if(StringUtils.isEmpty(file.getOriginalFilename())){
+            if (StringUtils.isEmpty(file.getOriginalFilename())) {
                 continue;
             }
             try {
@@ -362,13 +430,6 @@ public class EvaluationController {
         }
         model.add("message", "提交失败！");
         return "r:/case/list/user";
-    }
-
-    public static void main(String[] args) {
-        String fileName = "picUrl_1";
-        String questionIDStr = fileName.substring(fileName.getBytes().length - 1);
-        System.out.println(questionIDStr);
-
     }
 
     /**

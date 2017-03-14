@@ -75,8 +75,8 @@
                 <form class="form-horizontal" action="${ctx}/case/add/create" method="post">
                     <div class="content no-padding timeline">
                         <div class="tl-post">
-                            <span class="icon">&#59185;</span>
-                            <a href="#"><p style="width: 50%;"><img src="${product.picURL}" alt="...">
+                            <%--<span class="icon">&#59185;</span>--%>
+                            <a href="#"><p style="width: 50%;"><img src="${product.picURL}" style="width: 200px;height: 100px;" alt="...">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${product.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <span class="time">商品价格:${product.price}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品功能:${product.function}</span>
                             </p></a>
@@ -187,9 +187,6 @@
                     </div>
                     <c:if test="${!empty message}">
                         <div class="form-group" style="height: 45px; margin-top: 10px;">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <p style="color: #ac2925">${message}</p>
-                            </div>
                         </div>
                     </c:if>
                 </form>

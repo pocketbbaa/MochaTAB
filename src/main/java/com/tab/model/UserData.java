@@ -10,6 +10,8 @@ public class UserData {
     private int id;
     private int userID;
     private String name; //真实姓名
+    private int ageScope; //年龄范围
+
     private String nickName; //使用抹茶用户名
     private String phone; //电话号码
 
@@ -50,6 +52,14 @@ public class UserData {
     private int status; //账号状态 1:ok 0:异常
     private String remark; //备注
     private Date createTime; //创建时间
+
+    public int getAgeScope() {
+        return ageScope;
+    }
+
+    public void setAgeScope(int ageScope) {
+        this.ageScope = ageScope;
+    }
 
     public int getId() {
         return id;

@@ -227,13 +227,6 @@
                             <button style="width:600px;" type="submit" class="btn btn-success">立即创建</button>
                         </div>
                     </div>
-                    <c:if test="${!empty message}">
-                        <div class="form-group" style="height: 45px; margin-top: 10px;">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <p style="color: #ac2925">${message}</p>
-                            </div>
-                        </div>
-                    </c:if>
                 </form>
 
             </div>

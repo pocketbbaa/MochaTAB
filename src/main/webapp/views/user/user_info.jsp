@@ -26,7 +26,20 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="name"
                                    value="${userData.name}"
-                                   style="width: 250px;" name="name">
+                                   style="width: 250px;" name="name" readOnly="true">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="height: 45px; margin-top: 10px;">
+                        <label class="col-sm-2 control-label">年龄范围</label>
+                        <div class="col-sm-10" style="width: 250px;">
+                            <select class="form-control customed-select" style="border-color: #953b39" name="ageScope">
+                                <option <c:if test="${userData.ageScope == 1}">selected = "selected"</c:if> value="1">18以下</option>
+                                <option <c:if test="${userData.ageScope == 2}">selected = "selected"</c:if> value="2">18-25</option>
+                                <option <c:if test="${userData.ageScope == 3}">selected = "selected"</c:if> value="3">26-35</option>
+                                <option <c:if test="${userData.ageScope == 4}">selected = "selected"</c:if> value="4">36-45</option>
+                                <option <c:if test="${userData.ageScope == 5}">selected = "selected"</c:if> value="5">45以上</option>
+                            </select>
                         </div>
                     </div>
 
@@ -79,7 +92,7 @@
                         <label for="birthday" class="col-sm-2 control-label">生日</label>
                         <div class="col-sm-10">
                             <input style="width: 250px;" type="text" size="16" class="form_datetime" readonly
-                                   name="birthday" id="birthday" value="${userData.birthday}">
+                                   name="birthday" id="birthday" value="${birthday}">
                             <span class="glyphicon glyphicon-flag info-reminder hide"></span>
                             <span class="glyphicon glyphicon-ok info-reminder"></span>
                             <span class="glyphicon glyphicon-remove info-reminder hide"></span>
@@ -244,6 +257,21 @@
                                 <option <c:if test="${userData.job == 5}">selected = "selected"</c:if> value="5">营造业</option>
                                 <option <c:if test="${userData.job == 6}">selected = "selected"</c:if> value="6">商业</option>
                                 <option <c:if test="${userData.job == 7}">selected = "selected"</c:if> value="7">运输业</option>
+                                <option <c:if test="${userData.job == 8}">selected = "selected"</c:if> value="8">通信业</option>
+                                <option <c:if test="${userData.job == 9}">selected = "selected"</c:if> value="9">金融保险及不动产服务业</option>
+                                <option <c:if test="${userData.job == 10}">selected = "selected"</c:if> value="10">社会服务业</option>
+                                <option <c:if test="${userData.job == 11}">selected = "selected"</c:if> value="11">大众传播广告业</option>
+                                <option <c:if test="${userData.job == 12}">selected = "selected"</c:if> value="12">个人服务业</option>
+                                <option <c:if test="${userData.job == 13}">selected = "selected"</c:if> value="13">工商服务业</option>
+                                <option <c:if test="${userData.job == 14}">selected = "selected"</c:if> value="14">公共行政业（公务人员）</option>
+                                <option <c:if test="${userData.job == 15}">selected = "selected"</c:if> value="15">军人</option>
+                                <option <c:if test="${userData.job == 16}">selected = "selected"</c:if> value="16">大学老师</option>
+                                <option <c:if test="${userData.job == 17}">selected = "selected"</c:if> value="17">中小学教师</option>
+                                <option <c:if test="${userData.job == 18}">selected = "selected"</c:if> value="18">家管</option>
+                                <option <c:if test="${userData.job == 19}">selected = "selected"</c:if> value="19">学生</option>
+                                <option <c:if test="${userData.job == 20}">selected = "selected"</c:if> value="20">退休</option>
+                                <option <c:if test="${userData.job == 21}">selected = "selected"</c:if> value="21">待业中</option>
+                                <option <c:if test="${userData.job == 22}">selected = "selected"</c:if> value="22">其他</option>
                             </select>
                         </div>
                     </div>
@@ -263,13 +291,6 @@
                         </div>
                     </div>
 
-                    <c:if test="${!empty message}">
-                        <div class="form-group" style="height: 45px; margin-top: 10px;">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <p style="color: #ac2925">${message}</p>
-                            </div>
-                        </div>
-                    </c:if>
                 </form>
 
             </div>

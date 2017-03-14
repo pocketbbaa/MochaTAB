@@ -102,13 +102,13 @@ public class ManagerController {
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
             webLog.info(Threads.getCallLocation() + ", edit/add-> username or password is null or size = 0");
             model.add("message", message);
-            return "r:/edit/list";
+            return "edit/add_manager";
         }
         if (managerService.userExist(username)) {
             webLog.info(Threads.getCallLocation() + ", edit/add-> username is exist ...");
             message = "用户名已存在";
             model.add("message", message);
-            return "r:/edit/list";
+            return "edit/add_manager";
         }
 
         Manager manager = new Manager();
@@ -123,7 +123,7 @@ public class ManagerController {
             return "r:/edit/list";
         }
         model.add("message", message);
-        return "r:/edit/list";
+        return "edit/add_manager";
     }
 
     /**

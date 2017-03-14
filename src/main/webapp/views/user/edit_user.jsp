@@ -31,6 +31,19 @@
                     </div>
 
                     <div class="form-group" style="height: 45px; margin-top: 10px;">
+                        <label class="col-sm-2 control-label">年龄范围</label>
+                        <div class="col-sm-10" style="width: 250px;">
+                            <select class="form-control customed-select" style="border-color: #953b39" name="ageScope">
+                                <option value="1">18以下</option>
+                                <option value="2">18-25</option>
+                                <option value="3">26-35</option>
+                                <option value="4">36-45</option>
+                                <option value="5">45以上</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="height: 45px; margin-top: 10px;">
                         <label for="phone" class="col-sm-2 control-label">电话号码</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="phone"
@@ -210,6 +223,21 @@
                                 <option value="5">营造业</option>
                                 <option value="6">商业</option>
                                 <option value="7">运输业</option>
+                                <option value="8">通信业</option>
+                                <option value="9">金融保险及不动产服务业</option>
+                                <option value="10">社会服务业</option>
+                                <option value="11">大众传播广告业</option>
+                                <option value="12">个人服务业</option>
+                                <option value="13">工商服务业</option>
+                                <option value="14">公共行政业（公务人员）</option>
+                                <option value="15">军人</option>
+                                <option value="16">大学老师</option>
+                                <option value="17">中小学教师</option>
+                                <option value="18">家管</option>
+                                <option value="19">学生</option>
+                                <option value="20">退休</option>
+                                <option value="21">待业中</option>
+                                <option value="22">其他</option>
                             </select>
                         </div>
                     </div>
@@ -229,13 +257,6 @@
                         </div>
                     </div>
 
-                    <c:if test="${!empty message}">
-                        <div class="form-group" style="height: 45px; margin-top: 10px;">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <p style="color: #ac2925">${message}</p>
-                            </div>
-                        </div>
-                    </c:if>
                 </form>
 
             </div>

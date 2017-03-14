@@ -17,7 +17,7 @@
         </a>
     </a></div>
     <section class="widget">
-        <div class="content" style="width: 80%">
+        <div class="content" style="width: 90%">
             <table id="myTable" border="0" width="90">
                 <thead>
                 <tr>

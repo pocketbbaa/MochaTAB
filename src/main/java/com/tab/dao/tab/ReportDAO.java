@@ -40,7 +40,7 @@ public interface ReportDAO {
      *
      * @return
      */
-    @SQL("SELECT r.ID as reportID,e.Title as title,u.MochaUserName as username,r.CreateTime as createTime " +
+    @SQL("SELECT r.ID as reportID,e.Title as title,u.MochaUserName as username,u.MochaUserPic,r.CreateTime as createTime " +
             "FROM report r " +
             "LEFT JOIN evaluation e ON r.evaluationID = e.ID " +
             "LEFT JOIN USER u ON r.UserID = u.ID " +
@@ -56,4 +56,38 @@ public interface ReportDAO {
      */
     @SQL("SELECT " + REPORT_PARAM + " FROM report WHERE ID = :1")
     Report getByID(int reportID);
+
+    /**
+     * 更新pass
+     *
+     * @param reportID
+     */
+    @SQL("UPDATE report SET Pass = :2 WHERE ID = :1")
+    void updatePass(int reportID, int pass);
+
+    /**
+     * 更新不通过理由
+     *
+     * @param reportID
+     * @param reason
+     */
+    @SQL("UPDATE report SET NoPassStr = :2 WHERE ID = :1")
+    void updateNoPassStr(int reportID, String reason);
+
+    /**
+     * 获取报告ID，判断用户是否已经提交过报告
+     *
+     * @param caseID
+     * @param userID
+     * @return
+     */
+    @SQL("SELECT ID FROM report WHERE UserID = :2 AND EvaluationID = :1 LIMIT 1")
+    Integer getIDByCaseIDAndUserID(int caseID, int userID);
+
+    /**
+     * 根据ID上次报告
+     * @param reportId
+     */
+    @SQL("DELETE FROM report WHERE ID = :1")
+    void deleteReportById(int reportId);
 }

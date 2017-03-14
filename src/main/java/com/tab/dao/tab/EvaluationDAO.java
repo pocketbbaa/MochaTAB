@@ -5,6 +5,7 @@ import com.tab.vo.EvaluationListVO;
 import net.paoding.rose.jade.annotation.DAO;
 import net.paoding.rose.jade.annotation.ReturnGeneratedKeys;
 import net.paoding.rose.jade.annotation.SQL;
+import net.paoding.rose.jade.annotation.SQLParam;
 
 import java.util.List;
 
@@ -61,7 +62,7 @@ public interface EvaluationDAO {
     String EvaluationParam = "ID,Title,Standard,Amount,Duration,StartDate,EndDate," +
             "ShowDate,ProductId,Visible,Version,CreateTime,UpdateTime,ResAmount,VotePercent,Item1amount,Item2amount,Item3amount,Item4amount," +
             "Item5amount,Item1grade,Item2grade,Item3grade,Item4grade,Item5grade,TotalGrade,Item1Apercent,Item2Apercent,Item3Apercent,Item4Apercent," +
-            "Item5Apercent,Question";
+            "Item5Apercent,Question,TotalAnswerScore";
 
     /**
      * 添加市调专案
@@ -85,14 +86,15 @@ public interface EvaluationDAO {
     void updateQuestion(String qsIDs, int caseID);
 
     /**
-     * 获取市调专案列表
+     * 获取市调专案列表(过滤用户已经提交过报告的市调)
      *
      * @return
      */
-    @SQL("SELECT  e.ID as id,p.picUrl AS picURL,e.Title AS title,e.CreateTime AS createTime,e.StartDate,e.EndDate,e.ProductId " +
-            "FROM evaluation e LEFT JOIN product p ON e.ProductId = p.id " +
-            "WHERE e.ISValid = 1 ORDER BY e.CreateTime DESC")
-    List<EvaluationListVO> getList();
+    @SQL("SELECT  e.ID AS id,p.picUrl AS picURL,e.Title AS title,e.CreateTime AS createTime,e.StartDate,e.EndDate,e.ProductId " +
+            "            FROM evaluation e " +
+            "            LEFT JOIN product p ON e.ProductId = p.id " +
+            "            WHERE e.ISValid = 1 AND e.ID NOT IN (SELECT DISTINCT(EvaluationID) FROM report WHERE UserID = :1) ORDER BY e.CreateTime DESC")
+    List<EvaluationListVO> getList(int userID);
 
     /**
      * 根据ID获取市调专案详情
@@ -102,4 +104,42 @@ public interface EvaluationDAO {
      */
     @SQL("SELECT " + EvaluationParam + " FROM evaluation WHERE ID = :1")
     Evaluation getByID(int id);
+
+    @SQL("SELECT  e.ID AS id,p.picUrl AS picURL,e.Title AS title,e.CreateTime AS createTime,e.StartDate,e.EndDate,e.ProductId " +
+            "            FROM evaluation e " +
+            "            LEFT JOIN product p ON e.ProductId = p.id " +
+            "            WHERE e.ISValid = 1 ORDER BY e.CreateTime DESC")
+    List<EvaluationListVO> getListByManager();
+
+
+    /**
+     * 获取没有通过审核的评测列表
+     *
+     * @param userID
+     * @return
+     */
+    @SQL("SELECT  e.ID AS id,p.picUrl AS picURL,e.Title AS title,e.CreateTime AS createTime,e.StartDate,e.EndDate,e.ProductId,r.Pass,r.NoPassStr " +
+            "                       FROM evaluation e " +
+            "                       LEFT JOIN product p ON e.ProductId = p.id " +
+            "                       LEFT JOIN report r ON  r.EvaluationID = e.ID " +
+            "                       WHERE r.Pass = 2 AND r.UserID = :1 " +
+            "                       ORDER BY e.CreateTime DESC ")
+    List<EvaluationListVO> getListNoPass(int userID);
+
+
+    /**
+     * 更新数据
+     *
+     * @param whereAmount
+     * @param whereTotalGrade
+     * @param whereExper
+     * @param whereAnswerScore
+     * @param whereJoinNum
+     * @param reportID
+     */
+    @SQL("UPDATE evaluation SET ##(:amount),##(:totalGrade),##(:whereExper),##(:answerScore),##(:joinNum) WHERE ID = :reportID")
+    void updateEvaluation(@SQLParam("amount") String whereAmount,
+                          @SQLParam("totalGrade") String whereTotalGrade, @SQLParam("whereExper") String whereExper,
+                          @SQLParam("answerScore") String whereAnswerScore,
+                          @SQLParam("joinNum") String whereJoinNum, @SQLParam("reportID") int reportID);
 }

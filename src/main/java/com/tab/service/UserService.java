@@ -89,4 +89,15 @@ public interface UserService {
      * @return
      */
     boolean updateUserDate(UserData userData);
+
+    /**
+     * 报告审核通过更新用户统计数据
+     *
+     * @param userID
+     * @param sqlFileNum
+     * @param sqlFileScore
+     * @param sqlGetApplyNum
+     * @param sqlVoteNum
+     */
+    void updateDate(int userID, String sqlFileNum, String sqlFileScore, String sqlGetApplyNum, String sqlVoteNum);
 }

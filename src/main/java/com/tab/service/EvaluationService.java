@@ -24,7 +24,7 @@ public interface EvaluationService {
      *
      * @return
      */
-    List<EvaluationListVO> getList();
+    List<EvaluationListVO> getList(int userID);
 
     /**
      * 根据ID获取市调专案详情
@@ -34,4 +34,26 @@ public interface EvaluationService {
      */
     Evaluation getByID(int id);
 
+    /**
+     * 获取市调专案列表
+     * @return
+     */
+    List<EvaluationListVO> getListByManager();
+
+    /**
+     * 获取为通过审核列表
+     * @param userID
+     * @return
+     */
+    List<EvaluationListVO> getListNoPass(int userID);
+
+    /**
+     * 更新市调数据
+     * @param whereAmount
+     * @param whereTotalGrade
+     * @param whereExper
+     * @param whereAnswerScore
+     * @param whereJoinNum
+     */
+    void updateEvaluation(String whereAmount, String whereTotalGrade, String whereExper, String whereAnswerScore, String whereJoinNum,int reportID);
 }

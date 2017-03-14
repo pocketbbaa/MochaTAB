@@ -30,7 +30,17 @@ public class Evaluation extends EvaluationBase{
     private int item4Apercent; // 選擇滿意度為差的比例
     private int item5Apercent; // 選擇滿意度為很差的比例
 
+    private int totalAnswerScore; //小题目总分
+
     private String question; //小题目
+
+    public int getTotalAnswerScore() {
+        return totalAnswerScore;
+    }
+
+    public void setTotalAnswerScore(int totalAnswerScore) {
+        this.totalAnswerScore = totalAnswerScore;
+    }
 
     public String getQuestion() {
         return question;
